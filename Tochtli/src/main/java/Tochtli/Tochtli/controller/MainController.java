@@ -21,9 +21,4 @@ public class MainController {
 		return new ModelAndView("history");
 	}
 	
-	@RequestMapping(value="/galery")
-	public ModelAndView galery(HttpServletResponse response) throws IOException{
-		return new ModelAndView("galery");
-	}
-	
 }
