@@ -38,6 +38,13 @@ public class Product {
 	@Column(name = "PHOTO_PATH")
 	private String photo_path;
 
+	/*
+	 * IF the invers relationship is needed
+	 * 
+	 * @OneToMany(mappedBy = "product") private Set<OrderedProduct> orders = new
+	 * HashSet<OrderedProduct>();
+	 */
+
 	public Product() {
 
 	}

@@ -1,5 +1,8 @@
 package Tochtli.Tochtli.model.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +30,13 @@ public class Order {
 	@Column(name = "TOTAL")
 	private double total;
 
-	// TODO many-to-many order product
+	/*
+	 * Since the OrderedProduct is not a pure join table, but has additional
+	 * functional fields, we must map it as an entity, and decompose the many to
+	 * many association between 2 many to many
+	 */
+	@OneToMany(mappedBy = "order")
+	private Set<OrderedProduct> orderedProducts = new HashSet<OrderedProduct>();
 
 	public Order() {
 
@@ -54,6 +64,14 @@ public class Order {
 
 	public void setTotal(double total) {
 		this.total = total;
+	}
+
+	public Set<OrderedProduct> getOrderedProducts() {
+		return orderedProducts;
+	}
+
+	public void setOrderedProducts(Set<OrderedProduct> orderedProducts) {
+		this.orderedProducts = orderedProducts;
 	}
 
 }
