@@ -10,7 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Order")
+@Table(name = "T_Order")
+/* 'order' is a reserved name, so hibernate will skip it when creating tables!!! */
 public class Order {
 
 	@Id
