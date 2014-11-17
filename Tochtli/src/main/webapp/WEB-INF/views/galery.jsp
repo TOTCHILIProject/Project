@@ -116,7 +116,7 @@
 					<hr>
 				</div>
 				<!-- forEach belongs to the jstl library !!! case sensitive !! -->
-				<c:forEach var="product" items="${products}">
+				<c:forEach var="product" items="${categories}">
 					<div class="col-sm-4 text-center">
 						<img class="img-responsive" src="img/..." alt="">
 						<h3>${product.name}

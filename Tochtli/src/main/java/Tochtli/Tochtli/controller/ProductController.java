@@ -10,24 +10,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import Tochtli.Tochtli.model.entity.Category;
 import Tochtli.Tochtli.model.entity.Product;
-import Tochtli.Tochtli.model.services.ProductService;
+import Tochtli.Tochtli.model.services.ProductCategoryService;
 
 @Controller
 public class ProductController {
 
 	@Autowired
-	private ProductService productService;
+	private ProductCategoryService productService;
 
+	/*Retrive all categories*/
 	@RequestMapping(value = "/galery")
 	public ModelAndView galery(HttpServletResponse response) throws IOException {
 		ModelAndView galeryView = new ModelAndView("galery");
-		List<Product> products = productService.findAllProducts();
+		List<Category> categories = productService.findAllCategories();
 
 		/*for(Product p : products)
 			System.out.println(p.getName());*/
 		
-		galeryView.addObject("products", products);
+		galeryView.addObject("categories", categories);
 		return galeryView;
 
 	}

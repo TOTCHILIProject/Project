@@ -8,6 +8,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository("ProductDAO")
 public class ProductDAOImpl implements ProductDAO {
@@ -23,6 +24,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
+	@Transactional
 	public List<Product> findAllProducts() {
 
 		Query query = sessionFactory.getCurrentSession().createQuery(
@@ -32,7 +34,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public void persistEmployee(Product product) {
+	public void persistProduct(Product product) {
 		sessionFactory.getCurrentSession().persist(product);
 	}
 

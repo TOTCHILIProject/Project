@@ -8,7 +8,7 @@ public interface ProductDAO {
 
 	public List<Product> findAllProducts();
 
-	public void persistEmployee(Product product);
+	public void persistProduct(Product product);
 
 	public Product findProductById(long id);
 
