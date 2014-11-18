@@ -74,8 +74,9 @@
 				<li><a href="/Tochtli">Inicio</a></li>
 				<li><a href="history">Historia</a></li>
 				<li><a href="galery">Galería</a></li>
-				<li><a href="login.html"><button type="button"
-							class="btn btn-default btn-lg">Iniciar Sesión</button></a></li>
+				<li><a href="admin">Administrar</a></li>
+				
+				<li><br><button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#login">Iniciar Sesión</button></li>
 				<!--li>
                         <a href="compra">Compra</a>
                     </li-->
@@ -84,6 +85,32 @@
 		<!-- /.navbar-collapse -->
 	</div>
 	<!-- /.container --> </nav>
+
+
+	<div class="modal fade bs-example-modal-sm" id="login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-sm">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        			<h4 class="modal-title" id="exampleModalLabel">Introduce tus datos</h4>
+      			</div>
+     			<div class="modal-body">
+        			<form role="form">
+  						<div class="form-group">
+   							<label for="user-name">Usuario</label>
+    						<input type="text" class="form-control" id="user-name" placeholder="Nombre de usuario">
+  						</div>
+  						<div class="form-group">
+    						<label for="pass-word">Password</label>
+    						<input type="password" class="form-control" id="pass-word" placeholder="Contraseña">
+  						</div>
+  						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+      			</div>
+    		</div>
+    	</div>
+  	</div>
+
 
 	<div class="container">
 
@@ -115,6 +142,10 @@
 					</h2>
 					<hr>
 				</div>
+				
+				
+				
+				
 				<!-- forEach belongs to the jstl library !!! case sensitive !! -->
 				<c:forEach var="product" items="${categories}">
 					<div class="col-sm-4 text-center">
@@ -124,6 +155,131 @@
 						</h3>
 					</div>
 				</c:forEach>
+				
+				
+				
+				
+				<div class="col-sm-4 text-center">
+					<img class="img-responsive img-full" data-toggle="modal" data-target="#tammodal" src="${pageContext.request.contextPath}/resources/img/tamales/t1.JPG" alt="">
+					<h2 class="intro-text text center">
+						<strong>Tamales</strong></h2>
+				</div>
+				<div class="col-sm-4 text-center">
+					<img class="img-responsive img-full" data-toggle="modal" data-target="#molmodal" src="${pageContext.request.contextPath}/resources/img/mole/mole1.JPG" alt="">
+					<h2 class="intro-text text center">
+						<strong>Mole</strong></h2>
+				</div>
+				<div class="col-sm-4 text-center">
+					<img class="img-responsive img-full" data-toggle="modal" data-target="#masmodal" src="${pageContext.request.contextPath}/resources/img/tamales/t2.JPG" alt="">
+					<h2 class="intro-text text center">
+						<strong>Masa</strong></h2>
+				</div>
+				
+				<div class="modal fade bs-example-modal-lg" id="tammodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  					<div class="modal-dialog modal-lg">
+    					<div class="modal-content">
+    						<h2 class="intro-text text-center">
+								<strong>Tamales</strong></h2>
+							<hr>
+							<div class="row">
+								<div class="col-lg-12 text-left">
+									<p>Lorem <strong>ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+									exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+									 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+									 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+									 mollit anim id est laborum.</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-1 text center"></div>
+								<div class="col-sm-11 text-left">
+									<h3 class="intro-text">Lista productos: </h3>
+									<ul>
+										<li>Tamal de dulce</li>
+										<li>Tamal de dulce</li>
+										<li>Tamal de dulce</li>
+										<li>Tamal de dulce</li>
+									</ul>
+										
+								</div>
+							</div>
+    						<hr>
+    					</div>
+  					</div>
+				</div>
+				<div class="modal fade bs-example-modal-lg" id="molmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  					<div class="modal-dialog modal-lg">
+    					<div class="modal-content">
+    					<h2 class="intro-text text-center">
+								<strong>Mole</strong></h2>
+							<hr>
+							<div class="row">
+								<div class="col-lg-12 text-left">
+									<p>Lorem <strong>ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+									exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+									 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+									 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+									 mollit anim id est laborum.</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-1 text center"></div>
+								<div class="col-sm-11 text-left">
+									<h3 class="intro-text">Lista productos: </h3>
+									<ul>
+										<li>Mole rojo</li>
+										<li>Mole rojo</li>
+										<li>Mole rojo</li>
+										<li>Mole rojo</li>
+									</ul>
+										
+								</div>
+							</div>
+    						<hr>
+    					</div>
+  					</div>
+				</div>
+				<div class="modal fade bs-example-modal-lg" id="masmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  					<div class="modal-dialog modal-lg">
+    					<div class="modal-content">
+    					<h2 class="intro-text text-center">
+								<strong>Masa</strong></h2>
+							<hr>
+							<div class="row">
+								<div class="col-lg-12 text-left">
+									<p>Lorem <strong>ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+									exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+									 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+									 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+									 mollit anim id est laborum.</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-1 text center"></div>
+								<div class="col-sm-11 text-left">
+									<h3 class="intro-text">Lista productos: </h3>
+									<ul>
+										<li>Masa para tamal</li>
+										<li>Masa para tamal</li>
+										<li>Masa para tamal</li>
+										<li>Masa para tamal</li>
+									</ul>
+										
+								</div>
+							</div>
+    						<hr>
+    					</div>
+  					</div>
+				</div>
+
+
+
+
+
+				
 				<div class="clearfix"></div>
 			</div>
 		</div>
@@ -142,10 +298,11 @@
 	</footer>
 
 	<!-- jQuery Version 1.11.0 -->
-	<script src="js/jquery-1.11.0.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.0.js"></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	
 
 </body>
 

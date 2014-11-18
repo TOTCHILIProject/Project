@@ -57,18 +57,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/Tochtli">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="history">Historia</a>
-                    </li>
-                    <li>
-                        <a href="galery">Galería</a>
-                    </li>
-                    <li>
-                        <a href="login.html"><button type="button" class="btn btn-default btn-lg">Iniciar Sesión</button></a>
-                    </li>
+					<li><a href="/Tochtli">Inicio</a></li>
+					<li><a href="history">Historia</a></li>
+					<li><a href="galery">Galería</a></li>
+					<li><a href="admin">Administrar</a></li>
+
+                    <li><br><button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#login">Iniciar Sesión</button></li>
+
                     <!--li>
                         <a href="compra.html">Compra</a>
                     </li-->
@@ -78,6 +73,30 @@
         </div>
         <!-- /.container -->
     </nav>
+    
+   	<div class="modal fade bs-example-modal-sm" id="login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-sm">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        			<h4 class="modal-title" id="exampleModalLabel">Introduce tus datos</h4>
+      			</div>
+     			<div class="modal-body">
+        			<form role="form">
+  						<div class="form-group">
+   							<label for="user-name">Usuario</label>
+    						<input type="text" class="form-control" id="user-name" placeholder="Nombre de usuario">
+  						</div>
+  						<div class="form-group">
+    						<label for="pass-word">Password</label>
+    						<input type="password" class="form-control" id="pass-word" placeholder="Contraseña">
+  						</div>
+  						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+      			</div>
+    		</div>
+    	</div>
+  	</div>
 
     <div class="container">
 
@@ -92,7 +111,7 @@
                 </div>
                 <div class="col-lg-12 text-center">
                     <img class="img-responsive img-border img-full" src="img/..." alt="">
-                    <h2>History about tamales TOCHTLI
+                    <h2>We will ask the client exactly what part of the history he wants us ti include on the page
                         <br>
                         <small>October 13, 2002</small>
                     </h2>
@@ -145,10 +164,10 @@
     </footer>
 
     <!-- jQuery Version 1.11.0 -->
-    <script src="js/jquery-1.11.0.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.0.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 
 </body>
 

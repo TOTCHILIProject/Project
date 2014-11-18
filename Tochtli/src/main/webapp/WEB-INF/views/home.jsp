@@ -61,18 +61,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <a href="">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="history">Historia</a>
-                    </li>
-                    <li>
-                        <a href="galery">Galería</a>
-                    </li>
-                    <li>
-                        <a href="login.html"><button type="button" class="btn btn-default btn-lg">Iniciar Sesión</button></a>
-                    </li>
+                    <li><a href="/Tochtli">Inicio</a></li>
+					<li><a href="history">Historia</a></li>
+					<li><a href="galery">Galería</a></li>
+					<li><a href="admin">Administrar</a></li>
+
+					<li><br><button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#login">Iniciar Sesión</button></li>
+
                     <!--li>
                         <a href="compra.html">Compra</a>
                     </li-->
@@ -83,6 +78,29 @@
         <!-- /.container -->
     </nav>
 
+	<div class="modal fade bs-example-modal-sm" id="login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  		<div class="modal-dialog modal-sm">
+    		<div class="modal-content">
+      			<div class="modal-header">
+        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        			<h4 class="modal-title" id="exampleModalLabel">Introduce tus datos</h4>
+      			</div>
+     			<div class="modal-body">
+        			<form role="form">
+  						<div class="form-group">
+   							<label for="user-name">Usuario</label>
+    						<input type="text" class="form-control" id="user-name" placeholder="Nombre de usuario">
+  						</div>
+  						<div class="form-group">
+    						<label for="pass-word">Password</label>
+    						<input type="password" class="form-control" id="pass-word" placeholder="Contraseña">
+  						</div>
+  						<button type="submit" class="btn btn-default">Submit</button>
+					</form>
+      			</div>
+    		</div>
+    	</div>
+  	</div>
     <div class="container">
 
         <div class="row">
@@ -94,18 +112,22 @@
                             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
                         </ol>
 
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img class="img-responsive img-full" src="${pageContext.request.contextPath}/resources/img/bg.jpg" alt="">
+                                <img class="img-responsive img-full" src="${pageContext.request.contextPath}/resources/img/tamales/t1.JPG" alt="">
                             </div>
                             <div class="item">
-                                <img class="img-responsive img-full" src="${pageContext.request.contextPath}/resources/img/tch.jpg" alt="">
+                                <img class="img-responsive img-full" src="${pageContext.request.contextPath}/resources/img/employees/emp1.JPG" alt="">
                             </div>
                             <div class="item">
-                                <img class="img-responsive img-full" src="${pageContext.request.contextPath}/resources/img/bg.jpg" alt="">
+                                <img class="img-responsive img-full" src="${pageContext.request.contextPath}/resources/img/mole/mole1.JPG" alt="">
+                            </div>
+                            <div class="item">
+                                <img class="img-responsive img-full" src="${pageContext.request.contextPath}/resources/img/posters/pos1.jpg" alt="">
                             </div>
                         </div>
 
