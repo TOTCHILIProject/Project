@@ -21,4 +21,9 @@ public class MainController {
 		return new ModelAndView("history");
 	}
 	
+	@RequestMapping(value="/compra")
+	public ModelAndView compra(HttpServletResponse response) throws IOException{
+		return new ModelAndView("compra");
+	}
+	
 }

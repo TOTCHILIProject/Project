@@ -77,7 +77,7 @@
 				<li><a href="login.html"><button type="button"
 							class="btn btn-default btn-lg">Iniciar Sesión</button></a></li>
 				<!--li>
-                        <a href="compra.html">Compra</a>
+                        <a href="compra">Compra</a>
                     </li-->
 			</ul>
 		</div>
