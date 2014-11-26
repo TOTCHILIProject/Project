@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import Tochtli.Tochtli.model.pojo.Contact;
-import Tochtli.Tochtli.model.services.EmailService;
+import Tochtli.Tochtli.model.services.email.EmailService;
 
 @Controller
 @SessionAttributes

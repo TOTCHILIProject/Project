@@ -1,0 +1,18 @@
+# Configuration file for javax.mail 
+# If a value for an item is not provided, then 
+# system defaults will be used. These items can 
+# also be set in code.
+
+# Host whose mail services will be used 
+# (Default value : localhost)
+mail.host=smtp.noos.fr
+
+#smtp.o2.ie smtp.o2.co.uk pop3.btconnect.com mail.btopenworld.com smtp.comcast.net mail.o2online.de
+
+# Other possible items include: 
+# mail.user= 
+# mail.store.protocol= 
+# mail.transport.protocol= 
+# mail.smtp.host= 
+# mail.smtp.user= 
+# mail.debug=
