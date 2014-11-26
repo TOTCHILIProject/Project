@@ -73,11 +73,10 @@
 				<li><a href="/Tochtli">Inicio</a></li>
 				<li><a href="history">Historia</a></li>
 				<li><a href="galery">Galería</a></li>
+				<li><a href="contact">Contact</a></li>
+				<li><a href="admin">Administrar</a></li>
 				<li><a href="login.html"><button type="button"
 							class="btn btn-default btn-lg">Iniciar Sesión</button></a></li>
-				<!--li>
-                        <a href="compra.html">Compra</a>
-                    </li-->
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -176,7 +175,5 @@
 	<!-- Bootstrap Core JavaScript -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
-
 </body>
-
 </html>

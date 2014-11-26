@@ -60,13 +60,10 @@
 					<li><a href="/Tochtli">Inicio</a></li>
 					<li><a href="history">Historia</a></li>
 					<li><a href="galery">Galería</a></li>
+					<li><a href="contact">Contact</a></li>
 					<li><a href="admin">Administrar</a></li>
 
                     <li><br><button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#login">Iniciar Sesión</button></li>
-
-                    <!--li>
-                        <a href="compra.html">Compra</a>
-                    </li-->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
