@@ -19,9 +19,13 @@ public class Category {
 	@Column(name = "NAME", nullable = false)
 	private String name;
 
-	@Column(name = "DESCRIPTION", nullable = false)
+	@Column(name = "DESCRIPTION")
 	private String description;
-	
+
+	/* for the instance we don't store images, but the image path */
+	@Column(name = "PHOTO_PATH")
+	private String photo_path;
+
 	public Category() {
 
 	}
@@ -52,6 +56,14 @@ public class Category {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getPhoto_path() {
+		return photo_path;
+	}
+
+	public void setPhoto_path(String photo_path) {
+		this.photo_path = photo_path;
 	}
 
 }

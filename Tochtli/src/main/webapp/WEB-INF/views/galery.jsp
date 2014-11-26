@@ -113,67 +113,27 @@
 
 
 	<div class="container">
-
-		<!--div class="row">
-            <div class="box">
-                <div class="col-lg-12">
-                    <hr>
-                    <h2 class="intro-text text-center">Products
-                        <strong>TOCHTLI</strong>
-                    </h2>
-                    <hr>
-                </div>
-                <div class="col-md-6">
-                    <img class="img-responsive img-border-left" src="img/..." alt="">
-                </div>
-                <div class="col-md-6">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div-->
-
 		<div class="row">
 			<div class="box">
 				<div class="col-lg-12">
 					<hr>
 					<h2 class="intro-text text-center">
-						Our <strong>Products</strong>
+						Our <strong>Product Categories</strong>
 					</h2>
 					<hr>
 				</div>
 				
-				
-				
-				
 				<!-- forEach belongs to the jstl library !!! case sensitive !! -->
-				<c:forEach var="product" items="${categories}">
+				<c:forEach var="categorie" items="${categories}">
 					<div class="col-sm-4 text-center">
-						<img class="img-responsive" src="img/..." alt="">
-						<h3>${product.name}
-							<small>${product.name}</small>
-						</h3>
+						<img class="img-responsive img-full" data-toggle="modal" data-target="#tammodal" 
+								src="${pageContext.request.contextPath}/resources/img/${categorie.photo_path}" alt="">
+						<h2 class="intro-text text center">
+							<strong>${categorie.name}</strong>
+						</h2>
+						
 					</div>
 				</c:forEach>
-				
-				
-				
-				
-				<div class="col-sm-4 text-center">
-					<img class="img-responsive img-full" data-toggle="modal" data-target="#tammodal" src="${pageContext.request.contextPath}/resources/img/tamales/t1.JPG" alt="">
-					<h2 class="intro-text text center">
-						<strong>Tamales</strong></h2>
-				</div>
-				<div class="col-sm-4 text-center">
-					<img class="img-responsive img-full" data-toggle="modal" data-target="#molmodal" src="${pageContext.request.contextPath}/resources/img/mole/mole1.JPG" alt="">
-					<h2 class="intro-text text center">
-						<strong>Mole</strong></h2>
-				</div>
-				<div class="col-sm-4 text-center">
-					<img class="img-responsive img-full" data-toggle="modal" data-target="#masmodal" src="${pageContext.request.contextPath}/resources/img/tamales/t2.JPG" alt="">
-					<h2 class="intro-text text center">
-						<strong>Masa</strong></h2>
-				</div>
 				
 				<div class="modal fade bs-example-modal-lg" id="tammodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   					<div class="modal-dialog modal-lg">
@@ -275,11 +235,6 @@
   					</div>
 				</div>
 
-
-
-
-
-				
 				<div class="clearfix"></div>
 			</div>
 		</div>
