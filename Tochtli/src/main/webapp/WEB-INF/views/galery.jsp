@@ -126,115 +126,42 @@
 				<!-- forEach belongs to the jstl library !!! case sensitive !! -->
 				<c:forEach var="categorie" items="${categories}">
 					<div class="col-sm-4 text-center">
-						<img class="img-responsive img-full" data-toggle="modal" data-target="#tammodal" 
+						<img class="img-responsive img-full" data-toggle="modal" data-target="#${categorie.name}" 
 								src="${pageContext.request.contextPath}/resources/img/${categorie.photo_path}" alt="">
 						<h2 class="intro-text text center">
-							<strong>${categorie.name}</strong>
+							<a href="/Tochtli/galery/${categorie.id}"><strong>${categorie.name}</strong></a>
 						</h2>
-						
+					</div>
+					
+					<!-- the details window -->
+					<div class="modal fade bs-example-modal-lg" id="${categorie.name}" 
+						tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+	  					<div class="modal-dialog modal-lg">
+	    					<div class="modal-content">
+	    						<h2 class="intro-text text-center">
+									<strong>${categorie.name}</strong>
+								<hr>
+								<div class="row">
+									<div class="col-lg-12 text-left">
+										<p>${categorie.description}</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-1 text center"></div>
+									<div class="col-sm-11 text-left">
+										<h3 class="intro-text">Lista productos: </h3>
+										<ul>
+										
+										<c:forEach var="product" items="${category.products}">
+											<li>${product.name}</li>
+										</c:forEach>
+										</ul>
+									</div>
+								</div>
+	    					</div>
+	  					</div>
 					</div>
 				</c:forEach>
-				
-				<div class="modal fade bs-example-modal-lg" id="tammodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  					<div class="modal-dialog modal-lg">
-    					<div class="modal-content">
-    						<h2 class="intro-text text-center">
-								<strong>Tamales</strong></h2>
-							<hr>
-							<div class="row">
-								<div class="col-lg-12 text-left">
-									<p>Lorem <strong>ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-									exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-									 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-									 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-									 mollit anim id est laborum.</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-1 text center"></div>
-								<div class="col-sm-11 text-left">
-									<h3 class="intro-text">Lista productos: </h3>
-									<ul>
-										<li>Tamal de dulce</li>
-										<li>Tamal de dulce</li>
-										<li>Tamal de dulce</li>
-										<li>Tamal de dulce</li>
-									</ul>
-										
-								</div>
-							</div>
-    						<hr>
-    					</div>
-  					</div>
-				</div>
-				<div class="modal fade bs-example-modal-lg" id="molmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  					<div class="modal-dialog modal-lg">
-    					<div class="modal-content">
-    					<h2 class="intro-text text-center">
-								<strong>Mole</strong></h2>
-							<hr>
-							<div class="row">
-								<div class="col-lg-12 text-left">
-									<p>Lorem <strong>ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-									exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-									 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-									 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-									 mollit anim id est laborum.</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-1 text center"></div>
-								<div class="col-sm-11 text-left">
-									<h3 class="intro-text">Lista productos: </h3>
-									<ul>
-										<li>Mole rojo</li>
-										<li>Mole rojo</li>
-										<li>Mole rojo</li>
-										<li>Mole rojo</li>
-									</ul>
-										
-								</div>
-							</div>
-    						<hr>
-    					</div>
-  					</div>
-				</div>
-				<div class="modal fade bs-example-modal-lg" id="masmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  					<div class="modal-dialog modal-lg">
-    					<div class="modal-content">
-    					<h2 class="intro-text text-center">
-								<strong>Masa</strong></h2>
-							<hr>
-							<div class="row">
-								<div class="col-lg-12 text-left">
-									<p>Lorem <strong>ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-									exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-									 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-									 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-									 mollit anim id est laborum.</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-1 text center"></div>
-								<div class="col-sm-11 text-left">
-									<h3 class="intro-text">Lista productos: </h3>
-									<ul>
-										<li>Masa para tamal</li>
-										<li>Masa para tamal</li>
-										<li>Masa para tamal</li>
-										<li>Masa para tamal</li>
-									</ul>
-										
-								</div>
-							</div>
-    						<hr>
-    					</div>
-  					</div>
-				</div>
-
 				<div class="clearfix"></div>
 			</div>
 		</div>
