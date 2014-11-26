@@ -9,5 +9,7 @@ public interface CategoryDAO {
 	public List<Category> findAllCategories();
 
 	public void persistCategory(Category category);
+	
+	public Category findById(Long id);
 
 }

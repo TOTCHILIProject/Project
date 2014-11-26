@@ -1,10 +1,15 @@
 package Tochtli.Tochtli.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +26,10 @@ public class Category {
 
 	@Column(name = "DESCRIPTION")
 	private String description;
+
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name = "category")
+	private List<Product> products;
 
 	/* for the instance we don't store images, but the image path */
 	@Column(name = "PHOTO_PATH")
@@ -64,6 +73,14 @@ public class Category {
 
 	public void setPhoto_path(String photo_path) {
 		this.photo_path = photo_path;
+	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 }

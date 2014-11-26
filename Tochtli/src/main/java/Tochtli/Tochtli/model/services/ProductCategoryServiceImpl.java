@@ -46,4 +46,9 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		return categoryDAO.findAllCategories();
 	}
 
+	@Override
+	public Category getCategoryById(Long id) {
+		return categoryDAO.findById(id);
+	}
+
 }

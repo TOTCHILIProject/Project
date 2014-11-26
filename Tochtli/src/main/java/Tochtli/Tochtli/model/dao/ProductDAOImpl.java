@@ -2,13 +2,13 @@ package Tochtli.Tochtli.model.dao;
 
 import java.util.List;
 
-import Tochtli.Tochtli.model.entity.Product;
-
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import Tochtli.Tochtli.model.entity.Product;
 
 @Repository("ProductDAO")
 public class ProductDAOImpl implements ProductDAO {
@@ -27,8 +27,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Transactional
 	public List<Product> findAllProducts() {
 
-		Query query = sessionFactory.getCurrentSession().createQuery(
-				"from " + Product.class.getName());
+		Query query = sessionFactory.getCurrentSession().createQuery("from " + Product.class.getName());
 
 		return (List<Product>) query.list();
 	}
@@ -40,8 +39,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public Product findProductById(long id) {
-		return (Product) sessionFactory.getCurrentSession().get(Product.class,
-				id);
+		return (Product) sessionFactory.getCurrentSession().get(Product.class, id);
 
 	}
 

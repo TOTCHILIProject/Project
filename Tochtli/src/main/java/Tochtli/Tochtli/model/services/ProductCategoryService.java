@@ -12,4 +12,6 @@ public interface ProductCategoryService {
 	public List<Category> findAllCategories();
 	
 	public void persistProduct(Product product);
+	
+	public Category getCategoryById(Long id);
 }

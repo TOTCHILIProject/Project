@@ -2,13 +2,14 @@ package Tochtli.Tochtli.model.dao;
 
 import java.util.List;
 
-import Tochtli.Tochtli.model.entity.Category;
-
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import Tochtli.Tochtli.model.entity.Category;
+import Tochtli.Tochtli.model.entity.Product;
 
 @Repository("CategoryDAO")
 public class CategoryDAOImpl implements CategoryDAO {
@@ -26,8 +27,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 	@Override
 	@Transactional
 	public List<Category> findAllCategories() {
-		Query query = sessionFactory.getCurrentSession().createQuery(
-				"from " + Category.class.getName());
+		Query query = sessionFactory.getCurrentSession().createQuery("from " + Category.class.getName());
 
 		return (List<Category>) query.list();
 	}
@@ -36,6 +36,12 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public void persistCategory(Category category) {
 		sessionFactory.getCurrentSession().persist(category);
 
+	}
+
+	@Override
+	@Transactional
+	public Category findById(Long id) {
+		return (Category) sessionFactory.getCurrentSession().get(Category.class, id);
 	}
 
 }

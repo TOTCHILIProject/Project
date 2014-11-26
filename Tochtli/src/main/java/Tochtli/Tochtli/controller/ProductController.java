@@ -7,11 +7,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import Tochtli.Tochtli.model.entity.Category;
-import Tochtli.Tochtli.model.entity.Product;
 import Tochtli.Tochtli.model.services.ProductCategoryService;
 
 @Controller
@@ -32,6 +33,16 @@ public class ProductController {
 		galeryView.addObject("categories", categories);
 		return galeryView;
 
+	}
+	
+	@RequestMapping(value="/galery/{categId}", method=RequestMethod.GET)
+	public ModelAndView detailCategory(@PathVariable Long categId) {
+	    
+	    ModelAndView galeryDetailView = new ModelAndView("detailCategory");
+		Category category = productService.getCategoryById(categId);
+
+		galeryDetailView.addObject("category", category);
+		return galeryDetailView;
 	}
 
 }
