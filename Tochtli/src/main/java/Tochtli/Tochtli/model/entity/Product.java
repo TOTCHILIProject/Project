@@ -22,16 +22,16 @@ public class Product {
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name = "category")
+	@JoinColumn(name = "category", nullable = false)
 	private Category category;
 
 	@Column(name = "UNITS")
 	private String units;
 
-	@Column(name = "PRICE")
+	@Column(name = "PRICE", nullable=false)
 	private double price;
 
-	@Column(name = "STOCK")
+	@Column(name = "STOCK", nullable=false)
 	private double stock;
 
 	/* for the instance we don't store images, but the image path */
