@@ -65,10 +65,10 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="/Tochtli">Inicio</a></li>
-				<li><a href="history">Historia</a></li>
-				<li><a href="galery">Galería</a></li>
-				<li><a href="contact">Contact</a></li>
-				<li><a href="admin">Administrar</a></li>
+				<li><a href="/Tochtli/history">Historia</a></li>
+				<li><a href="/Tochtli/galery">Galería</a></li>
+				<li><a href="/Tochtli/contact">Contact</a></li>
+				<li><a href="/Tochtli/admin">Administrar</a></li>
 				
 				<li><br><button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#login">Iniciar Sesión</button></li>
 			</ul>
@@ -117,19 +117,30 @@
 			  		<div class="col-lg-12">
 						<hr>
 							<h2 class="intro-text text-center">
-								Our <strong>Products</strong>
+								<p>Our <strong>Products</strong> </p>
+								Categoria<b> ${category.name} </b>
 							</h2>
 						<hr>
 					</div>
 					<!-- forEach belongs to the jstl library !!! case sensitive !! -->
 					<c:forEach var="product" items="${category.products}">
 						<div class="col-sm-4 text-center">
-							<img class="img-responsive img-full" data-toggle="modal" data-target="#tammodal" 
-									src="${pageContext.request.contextPath}/resources/img/${product.photo_path}" alt="">
+							<img src="${pageContext.request.contextPath}/resources/img/${product.photo_path}" alt="" class="img-thumbnail img-circle"> 
 							<h2 class="intro-text text center">
 								<strong>${product.name}</strong>
 							</h2>
-							
+							<table style="width:100%">
+								<tr  style="font-weight:bold">
+								    <td>Unit</td>
+								    <td>Price</td>
+								    <td>Stock</td>
+								 </tr>
+								 <tr>
+								   <td>${product.units}</td>	
+								   <td>${product.price}</td>
+								   <td>${product.stock}</td>	
+								 </tr>
+							</table>
 						</div>
 					</c:forEach>
 			   </c:otherwise>   

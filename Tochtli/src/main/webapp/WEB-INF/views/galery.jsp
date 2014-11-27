@@ -125,26 +125,26 @@
 				</div>
 				
 				<!-- forEach belongs to the jstl library !!! case sensitive !! -->
-				<c:forEach var="categorie" items="${categories}">
+				<c:forEach var="category" items="${categories}">
 					<div class="col-sm-4 text-center">
-						<img class="img-responsive img-full" data-toggle="modal" data-target="#${categorie.name}" 
-								src="${pageContext.request.contextPath}/resources/img/${categorie.photo_path}" alt="">
+						<img class="img-responsive img-full" data-toggle="modal" data-target="#${category.name}" 
+								src="${pageContext.request.contextPath}/resources/img/${category.photo_path}" alt="">
 						<h2 class="intro-text text center">
-							<a href="/Tochtli/galery/${categorie.id}"><strong>${categorie.name}</strong></a>
+							<a href="/Tochtli/galery/${category.id}"><strong>${category.name}</strong></a>
 						</h2>
 					</div>
 					
 					<!-- the details window -->
-					<div class="modal fade bs-example-modal-lg" id="${categorie.name}" 
+					<div class="modal fade bs-example-modal-lg" id="${category.name}" 
 						tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	  					<div class="modal-dialog modal-lg">
 	    					<div class="modal-content">
 	    						<h2 class="intro-text text-center">
-									<strong>${categorie.name}</strong>
+									<strong>${category.name}</strong>
 								<hr>
 								<div class="row">
 									<div class="col-lg-12 text-left">
-										<p>${categorie.description}</p>
+										<p>${category.description}</p>
 									</div>
 								</div>
 								<div class="row">
@@ -152,7 +152,6 @@
 									<div class="col-sm-11 text-left">
 										<h3 class="intro-text">Lista productos: </h3>
 										<ul>
-										
 										<c:forEach var="product" items="${category.products}">
 											<li>${product.name}</li>
 										</c:forEach>
