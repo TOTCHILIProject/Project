@@ -57,8 +57,6 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	public String addToCart(Order order, int quantity, long idProduct) {
 		List<OrderedProduct> alreadyOrdered = order.getOrderedProducts();
 
-		// populate set
-
 		for (OrderedProduct oP : alreadyOrdered) {
 			if (oP.getProduct().getId() == idProduct) {
 				oP.addQuantity(quantity);
@@ -78,4 +76,18 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		return "Product succesfully added to cart";
 	}
 
+	public void removeFromCart(Order order, long idProduct) {
+		List<OrderedProduct> alreadyOrdered = order.getOrderedProducts();
+
+		for (OrderedProduct oP : alreadyOrdered) {
+			if (oP.getProduct().getId() == idProduct) {
+				int q = oP.getQuantity();
+				double p = oP.getProduct().getPrice();
+				order.getOrderedProducts().remove(oP);
+				order.addToTotal(q, (-1) * p);
+				return;
+			}
+
+		}
+	}
 }

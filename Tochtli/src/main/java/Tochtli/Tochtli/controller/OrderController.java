@@ -14,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import Tochtli.Tochtli.model.entity.Category;
 import Tochtli.Tochtli.model.entity.Order;
+import Tochtli.Tochtli.model.entity.User;
+import Tochtli.Tochtli.model.pojo.Contact;
 import Tochtli.Tochtli.model.services.ProductCategoryService;
 
 @Controller
@@ -40,13 +42,28 @@ public class OrderController {
 		return galeryDetailView;
 
 	}
-	
+
 	@RequestMapping("/shoppingCart")
 	public ModelAndView shoppingCart(HttpServletResponse response) throws IOException {
 		ModelAndView shoppingCartView = new ModelAndView("shoppingCart");
 
 		shoppingCartView.addObject("order", order);
+		shoppingCartView.addObject("command", new User());
 		return shoppingCartView;
 	}
+
+	@RequestMapping("/removeFromCart")
+	public String shoppingCart(@RequestParam("id") long idProduct) throws IOException {
+		productService.removeFromCart(order, idProduct);
+		
+		return "redirect:" + "shoppingCart";
+	}
 	
+	@RequestMapping("/placeOrder")
+	public String placeOrder(@RequestParam("id") long idProduct) throws IOException {
+		productService.removeFromCart(order, idProduct);
+		
+		return ""; //TODO
+	}
+
 }

@@ -64,18 +64,49 @@
 				        <td>Product Name</td>
 				        <td>Price per Unit</td>
 				        <td>Quantity</td>
+				        <td>Actions</td>
 				      </tr>
 					  <% for(OrderedProduct op : ordProds){ %>
 					  	<tr style="text-align:left">
 					        <td><%=op.getProduct().getName() %></td>
 					        <td><%=op.getProduct().getPrice() %> $</td>
 					        <td><%=op.getQuantity() %></td>
+			      			<td>
+								 <form action="removeFromCart" method="post">
+								 	<input type="submit" name="Submit" value="Remove">
+							        <input type="hidden" name="id" value=<%=op.getProduct().getId() %>>
+							      </form>
+							 </td>
 				      	</tr>
 					  <% } %>
 					</table>
 					<h2 class="intro-text text-center">
 						Total : <strong><%=order.getTotal() %> $</strong>
 					</h2>
+					<p>Place your order</p>
+					<form:form method="post" action="placeOrder">
+						<div class="row">
+							<div class="form-group col-lg-4">
+								<form:label path="name">First Name</form:label>
+								<form:input path="firstName" class="form-control" />
+							</div>
+							<div class="form-group col-lg-4">
+								<form:label path="name">Last Name</form:label>
+								<form:input path="lastName" class="form-control" />
+							</div>
+							<div class="form-group col-lg-4">
+								<form:label path="email">Email Address</form:label>
+								<form:input path="email" class="form-control" type="email" />
+							</div>
+							<div class="form-group col-lg-4">
+								<form:label path="phone">Phone number</form:label>
+								<form:input path="phone" class="form-control" type="tel" />
+							</div>
+							<div class="form-group col-lg-12">
+								<input type="submit" class="btn btn-default" value="Place order" />
+							</div>
+						</div>
+					</form:form>
 				<% } %>
 				<div class="clearfix"></div>
 			</div>
