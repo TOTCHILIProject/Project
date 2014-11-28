@@ -38,6 +38,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
+	@Transactional
 	public Product findProductById(long id) {
 		return (Product) sessionFactory.getCurrentSession().get(Product.class, id);
 

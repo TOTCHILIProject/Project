@@ -1,10 +1,11 @@
 package Tochtli.Tochtli.model.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,13 +36,26 @@ public class Order {
 	 * functional fields, we must map it as an entity, and decompose the many to
 	 * many association between 2 many to many
 	 */
-	@OneToMany(mappedBy = "order")
-	private Set<OrderedProduct> orderedProducts = new HashSet<OrderedProduct>();
+	@OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+	private List<OrderedProduct> orderedProducts;
 
 	public Order() {
-
+		total = 0;
+		orderedProducts = new ArrayList<OrderedProduct>();
 	}
 
+	public void addToTotal(int quantity, double price) {
+		this.total += quantity * price;
+	}
+
+	public void addOrderedProduct(OrderedProduct op) {
+		if (orderedProducts == null) {
+			orderedProducts = new ArrayList<OrderedProduct>();
+		}
+		this.orderedProducts.add(op);
+	}
+
+	/* getters and setters */
 	public long getId() {
 		return id;
 	}
@@ -66,11 +80,11 @@ public class Order {
 		this.total = total;
 	}
 
-	public Set<OrderedProduct> getOrderedProducts() {
+	public List<OrderedProduct> getOrderedProducts() {
 		return orderedProducts;
 	}
 
-	public void setOrderedProducts(Set<OrderedProduct> orderedProducts) {
+	public void setOrderedProducts(List<OrderedProduct> orderedProducts) {
 		this.orderedProducts = orderedProducts;
 	}
 

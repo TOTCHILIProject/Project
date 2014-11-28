@@ -45,31 +45,6 @@
 <body>
 	<%@include file="menu.jsp" %>
 	
-	<div class="modal fade bs-example-modal-sm" id="login" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  		<div class="modal-dialog modal-sm">
-    		<div class="modal-content">
-      			<div class="modal-header">
-        			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        			<h4 class="modal-title" id="exampleModalLabel">Introduce tus datos</h4>
-      			</div>
-     			<div class="modal-body">
-        			<form role="form">
-  						<div class="form-group">
-   							<label for="user-name">Usuario</label>
-    						<input type="text" class="form-control" id="user-name" placeholder="Nombre de usuario">
-  						</div>
-  						<div class="form-group">
-    						<label for="pass-word">Password</label>
-    						<input type="password" class="form-control" id="pass-word" placeholder="Contraseña">
-  						</div>
-  						<button type="submit" class="btn btn-default">Submit</button>
-					</form>
-      			</div>
-    		</div>
-    	</div>
-  	</div>
-
-
 	<div class="container">
 		<div class="row">
 			<div class="box">

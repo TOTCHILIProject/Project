@@ -6,7 +6,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html lang="en">
-
 <head>
 
 <meta charset="utf-8">
@@ -66,7 +65,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="box">
-			
 			<c:choose>
 			   <c:when test="${category==null}">
 					<h2 class="intro-text text-center">
@@ -82,6 +80,11 @@
 							</h2>
 						<hr>
 					</div>
+					
+					<c:if test="${message!=null}">
+						${message}
+					</c:if>
+				
 					<!-- forEach belongs to the jstl library !!! case sensitive !! -->
 					<c:forEach var="product" items="${category.products}">
 						<div class="col-sm-4 text-center">
@@ -99,6 +102,15 @@
 								   <td>${product.units}</td>	
 								   <td>${product.price}</td>
 								   <td>${product.stock}</td>	
+								 </tr>
+								 <tr>
+									 <form action="addToCart" method="post">
+									 	<td>Quantity</td>
+									 	<td><input type="number" name="quantity" value="1"></td>
+									 	<td><input type="submit" name="Submit" value="Compra"></td>
+								        <input type="hidden" name="id" value="${product.id}">
+								        <input type="hidden" name="categId" value="${category.id}">
+								      </form>
 								 </tr>
 							</table>
 						</div>

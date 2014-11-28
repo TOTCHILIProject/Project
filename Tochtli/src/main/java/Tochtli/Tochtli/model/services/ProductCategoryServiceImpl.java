@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import Tochtli.Tochtli.model.dao.CategoryDAO;
 import Tochtli.Tochtli.model.dao.ProductDAO;
 import Tochtli.Tochtli.model.entity.Category;
+import Tochtli.Tochtli.model.entity.Order;
+import Tochtli.Tochtli.model.entity.OrderedProduct;
 import Tochtli.Tochtli.model.entity.Product;
 
 @Service("productService")
@@ -16,7 +18,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 
 	@Autowired
 	private ProductDAO productDAO;
-	
+
 	@Autowired
 	private CategoryDAO categoryDAO;
 
@@ -49,6 +51,31 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	@Override
 	public Category getCategoryById(Long id) {
 		return categoryDAO.findById(id);
+	}
+
+	@Override
+	public String addToCart(Order order, int quantity, long idProduct) {
+		List<OrderedProduct> alreadyOrdered = order.getOrderedProducts();
+
+		// populate set
+
+		for (OrderedProduct oP : alreadyOrdered) {
+			if (oP.getProduct().getId() == idProduct) {
+				oP.addQuantity(quantity);
+				order.addToTotal(quantity, oP.getProduct().getPrice());
+				return "Product succesfully added to cart";
+			}
+
+		}
+		// if the product wasn't in the cart
+		Product product = productDAO.findProductById(idProduct);
+		if (product == null) {
+			return "An error has occured <br/> Invalid product ID";
+		}
+		OrderedProduct oP = new OrderedProduct(product, quantity);
+		order.addToTotal(quantity, product.getPrice());
+		order.addOrderedProduct(oP);
+		return "Product succesfully added to cart";
 	}
 
 }

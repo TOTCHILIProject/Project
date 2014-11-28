@@ -27,16 +27,23 @@ public class OrderedProduct {
 	@JoinColumn(name = "prodct_id")
 	private Product product;
 
-	@Column(name = "price")
-	private double price;
-
 	@Column(name = "quantity")
-	private double quantity;
+	private int quantity;
 
 	public OrderedProduct() {
 
 	}
+	
+	public OrderedProduct(Product p, int q) {
+		this.product = p;
+		this.quantity = q;
+	}
 
+	public void addQuantity(int d){
+		this.quantity += d;
+	}
+	
+	/* getters and setters */
 	public long getId() {
 		return id;
 	}
@@ -61,19 +68,11 @@ public class OrderedProduct {
 		this.product = product;
 	}
 
-	public double getPrice() {
-		return price;
-	}
-
-	public void setPrice(double price) {
-		this.price = price;
-	}
-
-	public double getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setQuantity(double quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 
