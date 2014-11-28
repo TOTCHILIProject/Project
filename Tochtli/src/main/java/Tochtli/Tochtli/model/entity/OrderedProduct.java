@@ -1,7 +1,9 @@
 package Tochtli.Tochtli.model.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,11 +21,11 @@ public class OrderedProduct {
 	@Column(name = "ID", nullable = false)
 	private long id;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "order_id")
 	private Order order;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "prodct_id")
 	private Product product;
 
@@ -33,16 +35,16 @@ public class OrderedProduct {
 	public OrderedProduct() {
 
 	}
-	
+
 	public OrderedProduct(Product p, int q) {
 		this.product = p;
 		this.quantity = q;
 	}
 
-	public void addQuantity(int d){
+	public void addQuantity(int d) {
 		this.quantity += d;
 	}
-	
+
 	/* getters and setters */
 	public long getId() {
 		return id;

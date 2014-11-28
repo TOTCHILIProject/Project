@@ -3,6 +3,7 @@ package Tochtli.Tochtli.model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +25,7 @@ public class Order {
 	@Column(name = "ID", nullable = false)
 	private long id;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "user")
 	private User user;
 
@@ -36,7 +37,7 @@ public class Order {
 	 * functional fields, we must map it as an entity, and decompose the many to
 	 * many association between 2 many to many
 	 */
-	@OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<OrderedProduct> orderedProducts;
 
 	public Order() {
@@ -53,6 +54,7 @@ public class Order {
 			orderedProducts = new ArrayList<OrderedProduct>();
 		}
 		this.orderedProducts.add(op);
+		op.setOrder(this);
 	}
 
 	/* getters and setters */
