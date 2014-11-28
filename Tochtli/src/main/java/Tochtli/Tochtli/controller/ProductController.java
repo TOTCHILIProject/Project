@@ -27,9 +27,9 @@ public class ProductController {
 		ModelAndView galeryView = new ModelAndView("galery");
 		List<Category> categories = productService.findAllCategories();
 
-		for(Category p : categories)
+		/*for(Category p : categories)
 			System.out.println(p.getProducts().size());
-		
+		*/
 		galeryView.addObject("categories", categories);
 		return galeryView;
 
