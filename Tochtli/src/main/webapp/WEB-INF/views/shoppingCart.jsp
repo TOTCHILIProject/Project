@@ -1,3 +1,5 @@
+<%@page import="Tochtli.Tochtli.model.entity.OrderedProduct"%>
+<%@page import="Tochtli.Tochtli.model.entity.Order"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -5,8 +7,11 @@
 <%@page import="Tochtli.Tochtli.model.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%@ page import="java.util.List" %>
+<% Order order = (Order)request.getAttribute("order");
+   List<OrderedProduct> ordProds = order.getOrderedProducts();
+%>
 <html lang="en">
-
 <head>
 
 <meta charset="utf-8">
@@ -47,8 +52,31 @@
 					</h2>
 					<hr>
 				</div>
-								
-	
+				
+				<!-- between <%%> you can write java code -->
+				<% if(ordProds == null || ordProds.size() == 0){ %>
+					<h2 class="intro-text text-center">
+						Your Shopping Cart is empty
+					</h2>
+				<% }else { %>
+					<table class="text-center" style="width:50%" align="center">
+				      <tr style="font-weight:bold; text-align:left">
+				        <td>Product Name</td>
+				        <td>Price per Unit</td>
+				        <td>Quantity</td>
+				      </tr>
+					  <% for(OrderedProduct op : ordProds){ %>
+					  	<tr style="text-align:left">
+					        <td><%=op.getProduct().getName() %></td>
+					        <td><%=op.getProduct().getPrice() %> $</td>
+					        <td><%=op.getQuantity() %></td>
+				      	</tr>
+					  <% } %>
+					</table>
+					<h2 class="intro-text text-center">
+						Total : <strong><%=order.getTotal() %> $</strong>
+					</h2>
+				<% } %>
 				<div class="clearfix"></div>
 			</div>
 		</div>

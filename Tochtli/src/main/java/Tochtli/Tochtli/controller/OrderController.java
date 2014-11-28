@@ -43,7 +43,10 @@ public class OrderController {
 	
 	@RequestMapping("/shoppingCart")
 	public ModelAndView shoppingCart(HttpServletResponse response) throws IOException {
-		return new ModelAndView("shoppingCart");
+		ModelAndView shoppingCartView = new ModelAndView("shoppingCart");
+
+		shoppingCartView.addObject("order", order);
+		return shoppingCartView;
 	}
 	
 }
