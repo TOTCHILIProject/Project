@@ -11,6 +11,7 @@
 <%@ page import="java.util.List" %>
 <% Order order = (Order)request.getAttribute("order");
    List<OrderedProduct> ordProds = order.getOrderedProducts();
+   String msg =  (String)request.getAttribute("message");
 %>
 <html lang="en">
 <head>
@@ -53,6 +54,11 @@
 					</h2>
 					<hr>
 				</div>
+				<% if(msg != null) {%>
+					<h2 class="intro-text text-center">
+						<strong><%=msg %></strong>
+					</h2>
+				<%} %>
 				
 				<!-- between <%%> you can write java code -->
 				<% if(ordProds == null || ordProds.size() == 0){ %>

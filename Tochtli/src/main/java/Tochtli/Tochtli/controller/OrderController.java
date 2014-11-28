@@ -2,8 +2,6 @@ package Tochtli.Tochtli.controller;
 
 import java.io.IOException;
 
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -50,10 +48,13 @@ public class OrderController {
 	}
 
 	@RequestMapping("/shoppingCart")
-	public ModelAndView shoppingCart(HttpServletResponse response) throws IOException {
+	public ModelAndView shoppingCart(@RequestParam(required = false) boolean ok) throws IOException {
 		ModelAndView shoppingCartView = new ModelAndView("shoppingCart");
 
 		shoppingCartView.addObject("order", order);
+		if (ok) {
+			shoppingCartView.addObject("message", "Thank you for ordering!");
+		}
 		shoppingCartView.addObject("command", new User());
 		return shoppingCartView;
 	}
@@ -66,13 +67,13 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = "/placeOrder", method = RequestMethod.POST)
-	public String contactTochtli(@ModelAttribute("user") User user, BindingResult result) {
+	public ModelAndView contactTochtli(@ModelAttribute("user") User user, BindingResult result) {
 
 		order.setUser(user);
 		orderService.placeOrder(order);
 		// new order
 		order = new Order();
 
-		return "redirect:" + "shoppingCart";
+		return new ModelAndView("redirect:/shoppingCart?ok=true");
 	}
 }
