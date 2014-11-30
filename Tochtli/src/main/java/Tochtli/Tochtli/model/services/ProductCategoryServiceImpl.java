@@ -106,4 +106,19 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 			productDAO.deleteProduct(p);
 		}
 	}
+	
+	@Override
+	@Transactional
+	public void deleteCategory(Long id) {
+		/*
+		 * TODO :
+		 * first get all products in the category and delete them
+		 * second delete category itself
+		 */
+	}
+
+	@Override
+	public void persistCategory(Category category) {
+		categoryDAO.persistCategory(category);
+	}
 }

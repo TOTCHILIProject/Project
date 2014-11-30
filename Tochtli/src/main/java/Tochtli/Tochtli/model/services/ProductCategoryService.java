@@ -23,4 +23,8 @@ public interface ProductCategoryService {
 	public Product getProductById(Long id);
 	
 	public void deleteProduct(Long id);
+	
+	public void deleteCategory(Long id);
+	
+	public void persistCategory(Category category);
 }

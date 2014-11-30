@@ -108,4 +108,31 @@ public class ProductController {
 		return "redirect:";
 
 	}
+	
+	/* Retrieve all categories for admin */
+	@RequestMapping(value = "/admin/categories")
+	public ModelAndView categoryAdmin(HttpServletResponse response) throws IOException {
+		ModelAndView categoriesAdminView = new ModelAndView("admin/categoryAdmin");
+		List<Category> categories = productService.findAllCategories();
+
+		categoriesAdminView.addObject("categories", categories);
+		return categoriesAdminView;
+
+	}
+	
+	@RequestMapping(value = "/admin/categories/persistCategories", method = RequestMethod.POST)
+	public String persistCategory(@ModelAttribute("category") Category category) {
+
+		// System.out.println(contact.toString());
+
+		// for some reason it creates a new object => we have to link the
+		// product to the already existent categrory
+		//categ = productService.getCategoryById(categ.getId());
+		//product.setCategory(categ);
+
+		productService.persistCategory(category);
+
+		return "redirect:";
+
+	}
 }

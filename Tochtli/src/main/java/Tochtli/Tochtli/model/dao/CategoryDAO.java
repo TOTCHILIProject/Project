@@ -11,5 +11,9 @@ public interface CategoryDAO {
 	public void persistCategory(Category category);
 	
 	public Category findById(Long id);
+	
+	public void updateCategory(Category category);
+	
+	public void deleteCategory(Category category);
 
 }
