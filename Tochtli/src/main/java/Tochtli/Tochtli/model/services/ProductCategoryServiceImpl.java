@@ -102,8 +102,13 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	@Transactional
 	public void deleteProduct(Long id) {
 		Product p = productDAO.findProductById(id);
-		if(p!=null){
-			productDAO.deleteProduct(p);
+		if (p != null) {
+			if (Boolean.TRUE.equals(p.getActive())) {
+				p.setActive(false);
+			} else {
+				p.setActive(true);
+			}
+			productDAO.updateProduct(p);
 		}
 	}
 }

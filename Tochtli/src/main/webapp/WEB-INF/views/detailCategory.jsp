@@ -62,6 +62,7 @@
 				
 					<!-- forEach belongs to the jstl library !!! case sensitive !! -->
 					<c:forEach var="product" items="${category.products}">
+						<!--  TODO exclude inactive products -->
 						<div class="col-sm-4 text-center">
 							<img src="${pageContext.request.contextPath}/resources/img/${product.photo_path}" alt="" class="img-thumbnail img-circle"> 
 							<h2 class="intro-text text center">

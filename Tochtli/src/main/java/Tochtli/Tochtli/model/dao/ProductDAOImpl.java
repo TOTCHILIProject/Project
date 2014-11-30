@@ -49,9 +49,4 @@ public class ProductDAOImpl implements ProductDAO {
 		sessionFactory.getCurrentSession().update(product);
 	}
 
-	@Override
-	public void deleteProduct(Product product) {
-		sessionFactory.getCurrentSession().delete(product);
-	}
-
 }

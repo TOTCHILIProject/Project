@@ -14,6 +14,4 @@ public interface ProductDAO {
 
 	public void updateProduct(Product product);
 
-	public void deleteProduct(Product product);
-
 }

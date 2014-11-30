@@ -23,22 +23,26 @@ public class Product {
 	@Column(name = "NAME", nullable = false)
 	private String name;
 
-	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "category", nullable = false)
 	private Category category;
 
 	@Column(name = "UNITS")
 	private String units;
 
-	@Column(name = "PRICE", nullable=false)
+	@Column(name = "PRICE", nullable = false)
 	private double price;
 
-	@Column(name = "STOCK", nullable=false)
+	@Column(name = "STOCK", nullable = false)
 	private double stock;
 
 	/* for the instance we don't store images, but the image path */
 	@Column(name = "PHOTO_PATH")
 	private String photo_path;
+
+	/* cannot delete a product, only deactivate it => the client cannot see it */
+	@Column(name = "ACTIVE")
+	private Boolean active;
 
 	/*
 	 * IF the invers relationship is needed
@@ -115,6 +119,14 @@ public class Product {
 
 	public void setPhoto_path(String photo_path) {
 		this.photo_path = photo_path;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 }
