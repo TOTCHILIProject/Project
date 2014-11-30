@@ -30,11 +30,6 @@ public class MainController {
 		return new ModelAndView("history");
 	}
 
-	@RequestMapping(value = "/admin")
-	public ModelAndView admin(HttpServletResponse response) throws IOException {
-		return new ModelAndView("admin");
-	}
-
 	@RequestMapping("/contact")
 	public ModelAndView showContacts() {
 		// The spring framework expects an object with name command if you are

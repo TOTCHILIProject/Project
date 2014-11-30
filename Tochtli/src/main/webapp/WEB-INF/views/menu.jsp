@@ -24,9 +24,17 @@
 				<li><a href="/Tochtli/history">Historia</a></li>
 				<li><a href="/Tochtli/galery">Galería</a></li>
 				<li><a href="/Tochtli/contact">Contact</a></li>
-				<li><a href="/Tochtli/admin">Administrar</a></li>
-
-				<li><br><button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#login">Iniciar Sesión</button></li>
+				<li><a role="button" data-toggle="dropdown" data-target="#">Administrar
+					<span class="caret"></span></a>
+		    		<ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+		              <li><a href="/Tochtli/admin/products">Productos</a></li>
+		              <li><a href="#">Categorías</a></li>
+		              <li><a href="#">Pedidos</a></li>
+		              <li><a href="#">Reportes</a></li>
+		              <li><a href="#">Clientes</a></li>
+		            </ul>
+				</li>
+				<li><a role="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#login">Iniciar Sesión</a></li>
 				<li><a href="/Tochtli/shoppingCart"><img src="${pageContext.request.contextPath}/resources/img/cartImg.jpg" alt="" width="30"></a></li>
            </ul>
        </div>

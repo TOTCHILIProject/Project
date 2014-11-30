@@ -29,30 +29,17 @@ public class ProductController {
 	public ModelAndView galery(HttpServletResponse response) throws IOException {
 		ModelAndView galeryView = new ModelAndView("galery");
 		List<Category> categories = productService.findAllCategories();
-		//categories = productService.findAllCategories();
+		categories = productService.findAllCategories();
 		
-		/**Category cat1 = new Category("First category");
-		//cat1.setId(1);
-		categories.add(cat1);
-		
-		Category cat2 = new Category("Second category");
-		categories.add(cat2);
-		
-		Category cat3 = new Category("Third category");
-		categories.add(cat3);*/
-		
-		/*for(Category p : categories)
-			System.out.println(p.getProducts().size());
-		*/
 		galeryView.addObject("categories", categories);
 		return galeryView;
 
 	}
 	
 	/*Retrieve all products*/
-	@RequestMapping(value = "/admin")
+	@RequestMapping(value = "/admin/products")
 	public ModelAndView productAdmin(HttpServletResponse response) throws IOException {
-		ModelAndView productAdminView = new ModelAndView("products");
+		ModelAndView productAdminView = new ModelAndView("admin/productAdmin");
 		List<Product> products = productService.findAllProducts();
 		
 		productAdminView.addObject("products", products);

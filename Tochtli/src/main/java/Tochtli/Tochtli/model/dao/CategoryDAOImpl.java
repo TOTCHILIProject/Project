@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import Tochtli.Tochtli.model.entity.Category;
-import Tochtli.Tochtli.model.entity.Product;
 
 @Repository("CategoryDAO")
 public class CategoryDAOImpl implements CategoryDAO {
