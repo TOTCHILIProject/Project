@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -36,17 +37,6 @@ public class ProductController {
 
 	}
 	
-	/*Retrieve all products*/
-	@RequestMapping(value = "/admin/products")
-	public ModelAndView productAdmin(HttpServletResponse response) throws IOException {
-		ModelAndView productAdminView = new ModelAndView("admin/productAdmin");
-		List<Product> products = productService.findAllProducts();
-		
-		productAdminView.addObject("products", products);
-		return productAdminView;
-
-	}
-	
 	@RequestMapping(value="/galery/{categId}", method=RequestMethod.GET)
 	public ModelAndView detailCategory(@PathVariable Long categId) {
 	    
@@ -59,4 +49,59 @@ public class ProductController {
 		return galeryDetailView;
 	}
 
+	/*Retrieve all products*/
+	@RequestMapping(value = "/admin/products")
+	public ModelAndView productAdmin(HttpServletResponse response) throws IOException {
+		ModelAndView productAdminView = new ModelAndView("admin/productAdmin");
+		List<Product> products = productService.findAllProducts();
+		
+		productAdminView.addObject("products", products);
+		return productAdminView;
+
+	}
+	
+	@RequestMapping(value = "/admin/products/edit/{productID}")
+	public ModelAndView editProduct(@PathVariable Long productID) throws IOException {
+		ModelAndView productEditView = new ModelAndView("admin/editProduct");
+
+		Product product = productService.getProductById(productID);
+		
+		//form:form expects an object names command
+		productEditView.addObject("command", product);
+		return productEditView;
+
+	}
+	
+	@RequestMapping(value = "/admin/products/add")
+	public ModelAndView addProduct() throws IOException {
+		ModelAndView productEditView = new ModelAndView("admin/editProduct");
+
+		Product product = new Product();
+		
+		productEditView.addObject("command", product);
+		return productEditView;
+
+	}
+	
+	@RequestMapping(value = "/admin/products/delete/{productID}")
+	public String deleteProduct(@PathVariable Long productID) throws IOException {
+		productService.deleteProduct(productID);
+		
+		return "redirect:" + "admin/products";
+
+	}
+	
+	@RequestMapping(value = "/admin/products/persistProduct", method = RequestMethod.POST)
+	public String persistProduct(@ModelAttribute("product") Product product) {
+
+		// System.out.println(contact.toString());
+
+		System.out.println(product.getName());
+		
+		productService.persistProduct(product);
+
+		return "redirect:";
+		
+	}
 }
+

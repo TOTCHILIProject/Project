@@ -34,7 +34,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public void persistProduct(Product product) {
-		sessionFactory.getCurrentSession().persist(product);
+		sessionFactory.getCurrentSession().saveOrUpdate(product);
 	}
 
 	@Override

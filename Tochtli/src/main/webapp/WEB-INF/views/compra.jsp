@@ -78,11 +78,11 @@
                                 <label>Email Address</label>
                                 <input type="email" class="form-control">
                             </div>
+                            <div class="clearfix"></div>
                             <div class="form-group col-lg-4">
                                 <label>Phone Number</label>
                                 <input type="tel" class="form-control">
                             </div>
-                            <div class="clearfix"></div>
                             <div class="form-group col-lg-12">
                                 <label>Message</label>
                                 <textarea class="form-control" rows="6"></textarea>

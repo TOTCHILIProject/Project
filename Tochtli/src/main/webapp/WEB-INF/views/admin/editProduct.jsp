@@ -38,34 +38,33 @@
     	<div class="row">
     		<div class="box">
     			
-    		<h2 class="intro-text text-center">
-				<strong>Productos</strong>
-			</h2>
-			<div class="col-sm-2 text-center">
-				<a href="/Tochtli/admin/products/add">
-					<span class="glyphicon glyphicons-plus">
-						<strong>Add new product</strong>
-					</span>
-				</a>
-			</div><br/><br/>
-			
-			<c:forEach var="product" items="${products}">
-				<div class="col-sm-2 text-center">
-					<img src="${pageContext.request.contextPath}/resources/img/${product.photo_path}" alt="" height="50" width="50">
-					<h2 class="intro-text text center">
-						<strong>${product.name}</strong>
-					</h2>
-					Category:  ${product.category.name}<br/>
-					<a href="/Tochtli/admin/products/edit/${product.id}">
-						<span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
-					</a>
-					<br/>
-					<a href="/Tochtli/admin/products/delete/${product.id}">
-						<span class="glyphicon glyphicon-remove" aria-hidden="true">Delete</span>
-					</a>
-				</div>
-			</c:forEach>
-			
+    			<form:form method="post" action="/Tochtli/admin/products/persistProduct">
+					<div class="row">
+					<!-- TODO categories -->
+						<div class="form-group col-lg-4">
+							<form:label path="name">Name</form:label>
+							<form:input path="name" class="form-control" />
+						</div>
+						<div class="clearfix"></div>
+						<div class="form-group col-lg-4">
+							<form:label path="units">Units</form:label>
+							<form:input path="units" class="form-control" />
+						</div>
+						<div class="form-group col-lg-4">
+							<form:label path="price">Price</form:label>
+							<form:input path="price" class="form-control" type="number" />
+						</div>
+						<div class="form-group col-lg-12">
+							<form:label path="photo_path">Path Photo</form:label>
+							<form:input path="photo_path" class="form-control" rows="6" />
+						</div><div>
+						<div class="form-group col-lg-12">
+							<input type="hidden" name="save" value="product"> <input
+								type="submit" class="btn btn-default" value="Save" />
+						</div>
+					</div>
+				</form:form>
+		
     		</div>
     	</div>
 	</div>

@@ -76,6 +76,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		return "Product succesfully added to cart";
 	}
 
+	@Override
 	public void removeFromCart(Order order, long idProduct) {
 		List<OrderedProduct> alreadyOrdered = order.getOrderedProducts();
 
@@ -88,6 +89,21 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 				return;
 			}
 
+		}
+	}
+
+	@Override
+	@Transactional
+	public Product getProductById(Long id) {
+		return productDAO.findProductById(id);
+	}
+
+	@Override
+	@Transactional
+	public void deleteProduct(Long id) {
+		Product p = productDAO.findProductById(id);
+		if(p!=null){
+			productDAO.deleteProduct(p);
 		}
 	}
 }

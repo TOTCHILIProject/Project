@@ -109,8 +109,8 @@
 								<form:input path="message" class="form-control" rows="6" />
 							</div>
 							<div class="form-group col-lg-12">
-								<input type="hidden" name="save" value="contact"> <input
-									type="submit" class="btn btn-default" value="Submit" />
+								<input type="hidden" name="save" value="contact"> 
+								<input type="submit" class="btn btn-default" value="Submit" />
 							</div>
 						</div>
 					</form:form>

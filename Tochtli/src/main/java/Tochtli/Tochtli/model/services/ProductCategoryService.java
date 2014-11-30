@@ -19,4 +19,8 @@ public interface ProductCategoryService {
 	public String addToCart(Order order,int quantity,long idProduct);
 	
 	public void removeFromCart(Order order,long idProduct);
+	
+	public Product getProductById(Long id);
+	
+	public void deleteProduct(Long id);
 }
