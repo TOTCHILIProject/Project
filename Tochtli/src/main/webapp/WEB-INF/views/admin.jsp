@@ -2,6 +2,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
+<%@page import="Tochtli.Tochtli.model.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html lang="en">
 
@@ -42,6 +44,7 @@
   					<ul class="nav nav-tabs nav-justified" role="tablist">
     					<li role="presentation" class="active"><a href="#products" aria-controls="products" role="tab" data-toggle="tab">Productos</a></li>
     					<li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab">Categorías</a></li>
+    					<li role="presentation"><a href="#orders" aria-controls="orders" role="tab" data-toggle="tab">Orders</a></li>
     					<li role="presentation"><a href="#reports" aria-controls="reports" role="tab" data-toggle="tab">Reportes</a></li>
     					<li role="presentation"><a href="#clients" aria-controls="clients" role="tab" data-toggle="tab">Clientes</a></li>
   					</ul>
@@ -52,6 +55,9 @@
     					</div>
     					<div role="tabpanel" class="tab-pane fade" id="family">
 							<%@include file="admin/categoryAdmin.jsp" %>
+    					</div>
+    					<div role="tabpanel" class="tab-pane fade" id="orders">
+							<%@include file="admin/ordersAdmin.jsp" %>
     					</div>
     					<div role="tabpanel" class="tab-pane fade" id="reports">
 							<%@include file="admin/reportsAdmin.jsp" %>

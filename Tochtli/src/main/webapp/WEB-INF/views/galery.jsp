@@ -71,8 +71,10 @@
 						tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	  					<div class="modal-dialog modal-lg">
 	    					<div class="modal-content">
+	    						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
 	    						<h2 class="intro-text text-center">
 									<strong>${category.name}</strong>
+								</h2>
 								<hr>
 								<div class="row">
 									<div class="col-lg-12 text-left">
