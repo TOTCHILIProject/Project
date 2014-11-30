@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import Tochtli.Tochtli.model.dao.OrderDAO;
 import Tochtli.Tochtli.model.entity.Order;
+import Tochtli.Tochtli.model.pojo.OrderFilter;
 
 @Service("orderService")
 public class OrderServiceImpl implements OrderService {
@@ -30,5 +31,10 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public List<Order> getAllOrders() {
 		return orderDAO.getAllOrders();
+	}
+
+	@Override
+	public List<Order> getAllOrdersByFilter(OrderFilter filter) {
+		return orderDAO.getAllOrdersByFilter(filter);
 	}
 }

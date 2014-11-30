@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import Tochtli.Tochtli.model.entity.Category;
 import Tochtli.Tochtli.model.entity.Order;
 import Tochtli.Tochtli.model.entity.User;
+import Tochtli.Tochtli.model.pojo.OrderFilter;
 import Tochtli.Tochtli.model.services.OrderService;
 import Tochtli.Tochtli.model.services.ProductCategoryService;
 
@@ -87,8 +88,20 @@ public class OrderController {
 		List<Order> orders = orderService.getAllOrders();
 
 		productAdminView.addObject("orders", orders);
+		productAdminView.addObject("command", new OrderFilter());
 		return productAdminView;
 
+	}
+	
+	@RequestMapping(value = "/admin/orders/filter", method = RequestMethod.POST)
+	public ModelAndView filterOrders(@ModelAttribute("orderFilter") OrderFilter filter) {
+		ModelAndView productAdminView = new ModelAndView("admin/ordersAdmin");
+		List<Order> orders = orderService.getAllOrdersByFilter(filter);
+System.out.println(filter.getStartDate());
+System.out.println(filter.getEndDate());
+		productAdminView.addObject("orders", orders);
+		productAdminView.addObject("command", filter);
+		return productAdminView;
 	}
 }
 

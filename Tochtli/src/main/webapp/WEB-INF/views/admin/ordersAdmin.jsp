@@ -145,9 +145,26 @@
 				<%
 					}
 				%>
-				<%
-					}
-				%>
+				
+				<br/>Filter your orders
+				<form:form method="post" action="orders/filter">
+					<div class="row">
+						<div class="col-lg-2" style="float:left;">
+							<form:label path="startDate">Start Date</form:label>
+							<form:input path="startDate" class="form-control" type="date" />
+						</div>
+						<div class="form-group col-lg-2">
+							<form:label path="endDate">End Date</form:label>
+							<form:input path="endDate" class="form-control" type="date"/>
+						</div>
+						<div class="form-group col-lg-3">
+							<input type="submit" class="btn btn-default" value="Filter" />
+						</div>
+					</div>
+				</form:form>
+			<%
+				}
+			%>
 			</div>
 		</div>
 	</div>
