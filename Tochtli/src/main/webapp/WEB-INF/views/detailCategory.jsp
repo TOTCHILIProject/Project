@@ -62,34 +62,36 @@
 				
 					<!-- forEach belongs to the jstl library !!! case sensitive !! -->
 					<c:forEach var="product" items="${category.products}">
-						<!--  TODO exclude inactive products -->
-						<div class="col-sm-4 text-center">
-							<img src="${pageContext.request.contextPath}/resources/img/${product.photo_path}" alt="" class="img-thumbnail img-circle"> 
-							<h2 class="intro-text text center">
-								<strong>${product.name}</strong>
-							</h2>
-							<table style="width:100%">
-								<tr  style="font-weight:bold">
-								    <td>Unit</td>
-								    <td>Price</td>
-								    <td>Stock</td>
-								 </tr>
-								 <tr>
-								   <td>${product.units}</td>	
-								   <td>${product.price}</td>
-								   <td>${product.stock}</td>	
-								 </tr>
-								 <tr>
-									 <form action="addToCart" method="post">
-									 	<td>Quantity</td>
-									 	<td><input type="number" name="quantity" value="1"></td>
-									 	<td><input type="submit" name="Submit" value="Compra"></td>
-								        <input type="hidden" name="id" value="${product.id}">
-								        <input type="hidden" name="categId" value="${category.id}">
-								      </form>
-								 </tr>
-							</table>
-						</div>
+						<c:if test="${product.active==true}">
+							<!-- print product -->
+							<div class="col-sm-4 text-center">
+								<img src="${pageContext.request.contextPath}/resources/img/${product.photo_path}" alt="" class="img-thumbnail img-circle"> 
+								<h2 class="intro-text text center">
+									<strong>${product.name}</strong>
+								</h2>
+								<table style="width:100%">
+									<tr  style="font-weight:bold">
+									    <td>Unit</td>
+									    <td>Price</td>
+									    <td>Stock</td>
+									 </tr>
+									 <tr>
+									   <td>${product.units}</td>	
+									   <td>${product.price}</td>
+									   <td>${product.stock}</td>	
+									 </tr>
+									 <tr>
+										 <form action="addToCart" method="post">
+										 	<td>Quantity</td>
+										 	<td><input type="number" name="quantity" value="1"></td>
+										 	<td><input type="submit" name="Submit" value="Compra"></td>
+									        <input type="hidden" name="id" value="${product.id}">
+									        <input type="hidden" name="categId" value="${category.id}">
+									      </form>
+									 </tr>
+								</table>
+							</div>
+						</c:if>
 					</c:forEach>
 			   </c:otherwise>   
 			</c:choose>
