@@ -84,11 +84,11 @@ public class ProductController {
 
 	}
 
-	@RequestMapping(value = "/admin/products/delete/{productID}")
-	public String deleteProduct(@PathVariable Long productID) throws IOException {
+	@RequestMapping(value = "/admin/products/activate/{productID}")
+	public String activateProduct(@PathVariable Long productID) throws IOException {
 		productService.deleteProduct(productID);
 
-		return "redirect:" + "admin/products";
+		return "redirect:" + "/admin/products";
 
 	}
 

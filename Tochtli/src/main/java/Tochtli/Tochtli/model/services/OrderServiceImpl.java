@@ -1,5 +1,7 @@
 package Tochtli.Tochtli.model.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +25,10 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public void placeOrder(Order order) {
 		orderDAO.persistOrder(order);
+	}
+
+	@Override
+	public List<Order> getAllOrders() {
+		return orderDAO.getAllOrders();
 	}
 }

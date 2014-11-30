@@ -1,6 +1,9 @@
 package Tochtli.Tochtli.controller;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -76,4 +79,16 @@ public class OrderController {
 
 		return new ModelAndView("redirect:/shoppingCart?ok=true");
 	}
+	
+	/* 	Administration */
+	@RequestMapping(value = "/admin/orders")
+	public ModelAndView orderAdmin(HttpServletResponse response) throws IOException {
+		ModelAndView productAdminView = new ModelAndView("admin/ordersAdmin");
+		List<Order> orders = orderService.getAllOrders();
+
+		productAdminView.addObject("orders", orders);
+		return productAdminView;
+
+	}
 }
+

@@ -10,7 +10,6 @@
 <html lang="en">
 <head>
 
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -68,8 +67,8 @@
 						</div>
 						<div class="form-group col-lg-12">
 							<form:hidden path="id" />
-							<input type="hidden" name="save" value="product"> <input
-								type="submit" class="btn btn-default" value="Save" />
+							<form:hidden path="active" />
+							<input type="submit" class="btn btn-default" value="Save" />
 						</div>
 					</div>
 				</form:form>

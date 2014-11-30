@@ -1,6 +1,7 @@
 package Tochtli.Tochtli.model.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -31,6 +32,17 @@ public class Order {
 
 	@Column(name = "TOTAL")
 	private double total;
+	
+	@Column(name = "DATE")
+	private Date date;
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 	/*
 	 * Since the OrderedProduct is not a pure join table, but has additional

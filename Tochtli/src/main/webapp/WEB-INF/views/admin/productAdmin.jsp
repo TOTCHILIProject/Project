@@ -60,9 +60,22 @@
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
 					</a>
 					<br/>
-					<a href="/Tochtli/admin/products/delete/${product.id}">
-						<span class="glyphicon glyphicon-remove" aria-hidden="true">Delete</span>
-					</a>
+					
+					<c:choose>
+				      <c:when test="${product.active==true}">
+						<a href="/Tochtli/admin/products/activate/${product.id}">
+							<span class="glyphicon glyphicon-remove" aria-hidden="true">Deactivate</span>
+						</a>
+				      </c:when>
+				
+				      <c:otherwise>
+						<a href="/Tochtli/admin/products/activate/${product.id}">
+							<span class="glyphicon glyphicon-ok" aria-hidden="true">Activate</span>
+						</a>
+				      </c:otherwise>
+				</c:choose>
+					
+					
 				</div>
 			</c:forEach>
 			
