@@ -40,10 +40,13 @@
     			
     			<form:form method="post" action="/Tochtli/admin/products/persistProduct">
 					<div class="row">
-					<!-- TODO categories -->
 						<div class="form-group col-lg-4">
 							<form:label path="name">Name</form:label>
 							<form:input path="name" class="form-control" />
+						</div>
+						<div class="form-group col-lg-4">
+							<form:label path="category">Category</form:label>
+							<form:select path="category.id" class="form-control" items="${categories}" itemValue="id" itemLabel="name" />
 						</div>
 						<div class="clearfix"></div>
 						<div class="form-group col-lg-4">
@@ -54,11 +57,17 @@
 							<form:label path="price">Price</form:label>
 							<form:input path="price" class="form-control" type="number" />
 						</div>
-						<div class="form-group col-lg-12">
+						<div class="clearfix"></div>
+						<div class="form-group col-lg-4">
+							<form:label path="stock">Stock</form:label>
+							<form:input path="stock" class="form-control" type="number" />
+						</div>
+						<div class="form-group col-lg-4">
 							<form:label path="photo_path">Path Photo</form:label>
 							<form:input path="photo_path" class="form-control" rows="6" />
-						</div><div>
+						</div>
 						<div class="form-group col-lg-12">
+							<form:hidden path="id" />
 							<input type="hidden" name="save" value="product"> <input
 								type="submit" class="btn btn-default" value="Save" />
 						</div>
