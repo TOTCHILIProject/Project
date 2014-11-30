@@ -39,7 +39,7 @@
     		<div class="box">
     			
     		<h2 class="intro-text text-center">
-				<strong>Categorías</strong>
+				<strong>Categorias</strong>
 			</h2>
 			<div class="col-sm-2 text-center">
 				<a href="/Tochtli/admin/categories/add">
@@ -49,7 +49,7 @@
 				</a>
 			</div><br/><br/>
 			
-			<!--<c:forEach var="category" items="${categories}">
+			<c:forEach var="category" items="${categories}">
 				<div class="col-sm-2 text-center">
 					<img src="${pageContext.request.contextPath}/resources/img/${category.photo_path}" alt="" height="50" width="50">
 					<h2 class="intro-text text center">
@@ -59,13 +59,12 @@
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
 					</a>
 					<br/>
-					<a href="/Tochtli/admin/categories/delete/${categories.id}">
-						<span class="glyphicon glyphicon-remove" aria-hidden="true">Delete</span>
-					</a>
+					
+					
 				</div>
-			</c:forEach>-->
+			</c:forEach>
 			
-			</div>
+    		</div>
     	</div>
 	</div>
     <!-- /.container -->
