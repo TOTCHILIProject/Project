@@ -53,6 +53,8 @@ public class OrderDAOImpl implements OrderDAO {
 		if(filter.getEndDate() !=null){
 			criteria.add(Restrictions.le("date", filter.getEndDate()));
 		}
+		//only distinct orders
+		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		
 		return (List<Order>) criteria.list();
 	}

@@ -97,6 +97,13 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.5</version>
 		</dependency>
+
+		<!-- Joda: datetime -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.5</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>

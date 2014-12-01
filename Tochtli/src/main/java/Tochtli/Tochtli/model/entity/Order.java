@@ -32,7 +32,7 @@ public class Order {
 
 	@Column(name = "TOTAL")
 	private double total;
-	
+
 	@Column(name = "DATE")
 	private Date date;
 

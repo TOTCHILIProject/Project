@@ -97,8 +97,7 @@ public class OrderController {
 	public ModelAndView filterOrders(@ModelAttribute("orderFilter") OrderFilter filter) {
 		ModelAndView productAdminView = new ModelAndView("admin/ordersAdmin");
 		List<Order> orders = orderService.getAllOrdersByFilter(filter);
-System.out.println(filter.getStartDate());
-System.out.println(filter.getEndDate());
+
 		productAdminView.addObject("orders", orders);
 		productAdminView.addObject("command", filter);
 		return productAdminView;

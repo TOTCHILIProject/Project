@@ -1,5 +1,6 @@
 <%@page import="Tochtli.Tochtli.model.entity.OrderedProduct"%>
 <%@page import="Tochtli.Tochtli.model.entity.Order"%>
+<%@page import="Tochtli.Tochtli.utils.Utils"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -74,7 +75,7 @@
 					<tr style="text-align: left">
 						<td><%=order.getId()%></td>
 						<td><%=order.getUser()%> $</td>
-						<td><%=order.getDate()%></td>
+						<td><%=Utils.formatDate(order.getDate())%></td>
 						<td><%=order.getOrderedProducts().size()%></td>
 						<td><%=order.getTotal()%></td>
 						<td><a role="button" data-toggle="modal"
@@ -95,29 +96,29 @@
 
 							<h2 class="intro-text text-center">
 								Order ID : <strong><%=order.getId()%> </strong> on
-								<%=order.getDate()%>
+								<b><%=Utils.formatDate(order.getDate())%></b> 
 							</h2>
 							<h4>User Information</h4>
-							<table>
+							<table style="border-spacing: 10px;">
 								<tr>
-									<td>First Name: </td>
+									<td style="font-weight: bold;text-align: right;">First Name: </td>
 									<td><%=order.getUser().getFirstName()%></td>
 								</tr>
 								<tr>
-									<td>Last Name: </td>
+									<td style="font-weight: bold;text-align: right;">Last Name: </td>
 									<td><%=order.getUser().getLastName()%></td>
 								</tr>
 								<tr>
-									<td>Email: </td>
+									<td style="font-weight: bold;text-align: right;">Email: </td>
 									<td><%=order.getUser().getEmail()%></td>
 								</tr>
 								<tr>
-									<td>Phone: </td>
+									<td style="font-weight: bold; text-align: right;">Phone: </td>
 									<td><%=order.getUser().getPhone()%></td>
 								</tr>
 							</table>
 							<h4>Products Information</h4>
-							<table class="text-center" align="left">
+							<table class="text-center" style="width:50%" >
 								<tr style="font-weight: bold; text-align: left">
 									<td>Product Name</td>
 									<td>Price per Unit</td>
@@ -126,11 +127,11 @@
 								<%
 									for (OrderedProduct op : order.getOrderedProducts()) {
 								%>
-								<tr style="text-align: left">
-									<td><%=op.getProduct().getName()%></td>
-									<td><%=op.getProduct().getPrice()%> $</td>
-									<td><%=op.getQuantity()%></td>
-								</tr>
+									<tr style="text-align: left">
+										<td><%=op.getProduct().getName()%></td>
+										<td><%=op.getProduct().getPrice()%> $</td>
+										<td><%=op.getQuantity()%></td>
+									</tr>
 								<%
 									}
 								%>
@@ -145,26 +146,25 @@
 				<%
 					}
 				%>
-				
-				<br/>Filter your orders
-				<form:form method="post" action="orders/filter">
-					<div class="row">
-						<div class="col-lg-2" style="float:left;">
-							<form:label path="startDate">Start Date</form:label>
-							<form:input path="startDate" class="form-control" type="date" />
-						</div>
-						<div class="form-group col-lg-2">
-							<form:label path="endDate">End Date</form:label>
-							<form:input path="endDate" class="form-control" type="date"/>
-						</div>
-						<div class="form-group col-lg-3">
-							<input type="submit" class="btn btn-default" value="Filter" />
-						</div>
-					</div>
-				</form:form>
 			<%
 				}
 			%>
+			<br/>Filter your orders
+			<form:form method="post" action="/Tochtli/admin/orders/filter">
+				<div class="row">
+					<div class="col-lg-2" style="float:left;">
+						<form:label path="startDate">Start Date</form:label>
+						<form:input path="startDate" class="form-control" type="date" pattern="MM/dd/yyyy" />
+					</div>
+					<div class="form-group col-lg-2">
+						<form:label path="endDate">End Date</form:label>
+						<form:input path="endDate" class="form-control" type="date" pattern="MM/dd/yyyy"/>
+					</div>
+					<div class="form-group col-lg-3">
+						<input type="submit" class="btn btn-default" value="Filter" />
+					</div>
+				</div>
+			</form:form>
 			</div>
 		</div>
 	</div>
