@@ -13,4 +13,8 @@ public interface OrderDAO {
 
 	public List<Order> getAllOrdersByFilter(OrderFilter filter);
 	
+	public List<Object[]> getInfosByYear();
+	
+	public List<Object[]> getInfosByMonth();
+	
 }

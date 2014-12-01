@@ -2,9 +2,7 @@ package Tochtli.Tochtli.model.services;
 
 import java.util.List;
 
-import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.time.TimeSeriesCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -140,17 +138,5 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 			//System.out.println(p.getStock());
 		}
 		return dpd;
-	}
-	
-	@Override
-	public DefaultCategoryDataset getOrdersBarDataSet() {
-		DefaultCategoryDataset dpd = new DefaultCategoryDataset();
-		
-		return dpd;
-	}
-	
-	@Override
-	public TimeSeriesCollection getOrdersMonthSeries(){
-		return new TimeSeriesCollection();
 	}
 }

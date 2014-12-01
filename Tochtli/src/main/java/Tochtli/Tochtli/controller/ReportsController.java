@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import Tochtli.Tochtli.model.services.OrderService;
 import Tochtli.Tochtli.model.services.ProductCategoryService;
 
 @Controller
@@ -32,6 +33,9 @@ public class ReportsController {
 
 	@Autowired
 	private ProductCategoryService productService;
+
+	@Autowired
+	private OrderService orderService;
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView googlechart(HttpServletResponse response) {
@@ -68,11 +72,11 @@ public class ReportsController {
 	public void year(HttpServletResponse response) {
 
 		response.setContentType("image/png");
-		DefaultCategoryDataset dataset = productService.getOrdersBarDataSet();
+		DefaultCategoryDataset dataset = orderService.getOrdersBarDataSet();
 		String title = "Orders per year at " + (new Date());
 
-		JFreeChart chart = ChartFactory.createBarChart(title, "Test1", "Test2", dataset, PlotOrientation.VERTICAL,
-				false, true, false);
+		JFreeChart chart = ChartFactory.createBarChart(title, "Year", "Quantity", dataset, PlotOrientation.VERTICAL,
+				true, true, true);
 		CategoryPlot plot = (CategoryPlot) chart.getPlot();
 		plot.setForegroundAlpha(0.5f);
 		plot.setBackgroundAlpha(0.0f);
@@ -89,7 +93,7 @@ public class ReportsController {
 	public void month(HttpServletResponse response) {
 
 		response.setContentType("image/png");
-		TimeSeriesCollection dataset = productService.getOrdersMonthSeries();
+		TimeSeriesCollection dataset = orderService.getOrdersMonthSeries();
 		String title = "Orders per month at " + (new Date());
 
 		JFreeChart chart = ChartFactory.createTimeSeriesChart(title, "Test1", "Test2", dataset, true, true, false);
