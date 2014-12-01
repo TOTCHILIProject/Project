@@ -16,7 +16,7 @@ public interface OrderService {
 
 	public List<Order> getAllOrdersByFilter(OrderFilter filter);
 	
-	public DefaultCategoryDataset getOrdersBarDataSet();
+	public DefaultCategoryDataset[] getOrdersBarDataSet();
 	
 	public TimeSeriesCollection getOrdersMonthSeries();
 }

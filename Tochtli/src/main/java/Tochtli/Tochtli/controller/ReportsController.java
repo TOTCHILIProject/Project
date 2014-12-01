@@ -1,6 +1,7 @@
 package Tochtli.Tochtli.controller;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletResponse;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.CombinedDomainCategoryPlot;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
@@ -72,17 +75,32 @@ public class ReportsController {
 	public void year(HttpServletResponse response) {
 
 		response.setContentType("image/png");
-		DefaultCategoryDataset dataset = orderService.getOrdersBarDataSet();
+		DefaultCategoryDataset[] dataset = orderService.getOrdersBarDataSet();
+		String title0 = "Value of Orders per year at " + (new Date());
+		String title1 = "Number of Orders per year at " + (new Date());
 		String title = "Orders per year at " + (new Date());
 
-		JFreeChart chart = ChartFactory.createBarChart(title, "Year", "Quantity", dataset, PlotOrientation.VERTICAL,
-				true, true, true);
-		CategoryPlot plot = (CategoryPlot) chart.getPlot();
-		plot.setForegroundAlpha(0.5f);
-		plot.setBackgroundAlpha(0.0f);
+		JFreeChart chart0 = ChartFactory.createBarChart(title0, "Year", "Quantity", dataset[0],
+				PlotOrientation.VERTICAL, true, true, true);
+		CategoryPlot plot0 = (CategoryPlot) chart0.getPlot();
+		plot0.setForegroundAlpha(0.5f);
+		plot0.setBackgroundAlpha(0.0f);
+
+		JFreeChart chart1 = ChartFactory.createBarChart(title1, "Year", "Quantity", dataset[1],
+				PlotOrientation.VERTICAL, true, true, true);
+		CategoryPlot plot1 = (CategoryPlot) chart1.getPlot();
+		plot1.setForegroundAlpha(0.5f);
+		plot1.setBackgroundAlpha(0.0f);
+
+		CategoryAxis domainAxis = new CategoryAxis("");
+		CombinedDomainCategoryPlot finalPlot = new CombinedDomainCategoryPlot(domainAxis);
+		finalPlot.add(plot0, 2);
+		finalPlot.add(plot1, 1);
+
+		JFreeChart result = new JFreeChart(title, new Font("SansSerif", Font.BOLD, 12), finalPlot, true);
 
 		try {
-			ChartUtilities.writeChartAsPNG(response.getOutputStream(), chart, 750, 400);
+			ChartUtilities.writeChartAsPNG(response.getOutputStream(), result, 750, 400);
 			response.getOutputStream().close();
 		} catch (Exception e) {
 			e.printStackTrace();

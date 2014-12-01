@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.time.Day;
-import org.jfree.data.time.Month;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,14 +43,16 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public DefaultCategoryDataset getOrdersBarDataSet() {
-		DefaultCategoryDataset dpd = new DefaultCategoryDataset();
+	public DefaultCategoryDataset[] getOrdersBarDataSet() {
+		DefaultCategoryDataset[] dpd = new DefaultCategoryDataset[2];
+		dpd[0] = new DefaultCategoryDataset();
+		dpd[1] = new DefaultCategoryDataset();
 
 		List<Object[]> li = orderDAO.getInfosByYear();
 		/* o[0] = total o[1]=count o[2]=year */
 		for (Object[] o : li) {
-			dpd.setValue(Double.parseDouble((o[0]).toString()), "total", (o[2]).toString());
-			dpd.setValue(Double.parseDouble((o[1]).toString()), "nomber", (o[2]).toString());
+			dpd[0].setValue(Double.parseDouble((o[0]).toString()), "total", (o[2]).toString());
+			dpd[1].setValue(Double.parseDouble((o[1]).toString()), "nomber", (o[2]).toString());
 		}
 
 		return dpd;
