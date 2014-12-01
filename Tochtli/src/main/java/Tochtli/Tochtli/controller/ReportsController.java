@@ -10,11 +10,15 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.CombinedDomainCategoryPlot;
+import org.jfree.chart.plot.CombinedDomainXYPlot;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.time.TimeSeriesCollection;
@@ -40,6 +44,8 @@ public class ReportsController {
 	@Autowired
 	private OrderService orderService;
 
+	private Color trans = new Color(0xFF, 0xFF, 0xFF, 0);
+
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public ModelAndView googlechart(HttpServletResponse response) {
 		return new ModelAndView("admin/reportsAdmin");
@@ -57,9 +63,7 @@ public class ReportsController {
 		plot.setStartAngle(290);
 		plot.setDirection(Rotation.CLOCKWISE);
 		plot.setForegroundAlpha(0.5f);
-		plot.setBackgroundAlpha(0.0f);
 
-		Color trans = new Color(0xFF, 0xFF, 0xFF, 0);
 		chart.setBackgroundPaint(trans);
 		plot.setBackgroundPaint(trans);
 
@@ -80,24 +84,25 @@ public class ReportsController {
 		String title1 = "Number of Orders per year at " + (new Date());
 		String title = "Orders per year at " + (new Date());
 
-		JFreeChart chart0 = ChartFactory.createBarChart(title0, "Year", "Quantity", dataset[0],
+		JFreeChart chart0 = ChartFactory.createBarChart(title0, "Year", "Value ($)", dataset[0],
 				PlotOrientation.VERTICAL, true, true, true);
 		CategoryPlot plot0 = (CategoryPlot) chart0.getPlot();
 		plot0.setForegroundAlpha(0.5f);
-		plot0.setBackgroundAlpha(0.0f);
 
-		JFreeChart chart1 = ChartFactory.createBarChart(title1, "Year", "Quantity", dataset[1],
-				PlotOrientation.VERTICAL, true, true, true);
+		JFreeChart chart1 = ChartFactory.createBarChart(title1, "Year", "Number", dataset[1], PlotOrientation.VERTICAL,
+				true, true, true);
 		CategoryPlot plot1 = (CategoryPlot) chart1.getPlot();
 		plot1.setForegroundAlpha(0.5f);
-		plot1.setBackgroundAlpha(0.0f);
 
 		CategoryAxis domainAxis = new CategoryAxis("");
 		CombinedDomainCategoryPlot finalPlot = new CombinedDomainCategoryPlot(domainAxis);
-		finalPlot.add(plot0, 2);
-		finalPlot.add(plot1, 1);
+		finalPlot.add(plot0);
+		finalPlot.add(plot1);
 
 		JFreeChart result = new JFreeChart(title, new Font("SansSerif", Font.BOLD, 12), finalPlot, true);
+
+		result.setBackgroundPaint(trans);
+		finalPlot.setBackgroundPaint(trans);
 
 		try {
 			ChartUtilities.writeChartAsPNG(response.getOutputStream(), result, 750, 400);
@@ -111,16 +116,43 @@ public class ReportsController {
 	public void month(HttpServletResponse response) {
 
 		response.setContentType("image/png");
-		TimeSeriesCollection dataset = orderService.getOrdersMonthSeries();
+		TimeSeriesCollection[] dataset = orderService.getOrdersMonthSeries();
 		String title = "Orders per month at " + (new Date());
 
-		JFreeChart chart = ChartFactory.createTimeSeriesChart(title, "Test1", "Test2", dataset, true, true, false);
-		XYPlot plot = (XYPlot) chart.getPlot();
-		plot.setForegroundAlpha(0.5f);
-		plot.setBackgroundAlpha(0.0f);
+		JFreeChart chart0 = ChartFactory.createTimeSeriesChart(title, "Month", "Value ($)", dataset[0], true, true,
+				false);
+		XYPlot plot0 = (XYPlot) chart0.getPlot();
+		plot0.setForegroundAlpha(0.5f);
+		XYItemRenderer r0 = plot0.getRenderer();
+		if (r0 instanceof XYLineAndShapeRenderer) {
+			XYLineAndShapeRenderer renderer0 = (XYLineAndShapeRenderer) r0;
+			renderer0.setBaseShapesVisible(true);
+			renderer0.setBaseShapesFilled(true);
+			renderer0.setDrawSeriesLineAsPath(true);
+		}
 
+		JFreeChart chart1 = ChartFactory.createTimeSeriesChart(title, "Month", "Number", dataset[1], true, true, false);
+		XYPlot plot1 = (XYPlot) chart1.getPlot();
+		plot1.setForegroundAlpha(0.5f);
+		XYItemRenderer r1 = plot1.getRenderer();
+		if (r1 instanceof XYLineAndShapeRenderer) {
+			XYLineAndShapeRenderer renderer1 = (XYLineAndShapeRenderer) r1;
+			renderer1.setBaseShapesVisible(true);
+			renderer1.setBaseShapesFilled(true);
+			renderer1.setDrawSeriesLineAsPath(true);
+		}
+
+		CombinedDomainXYPlot finalPlot = new CombinedDomainXYPlot(new DateAxis("Domain"));
+		finalPlot.add(plot0);
+		finalPlot.add(plot1);
+		finalPlot.setOrientation(PlotOrientation.VERTICAL);
+
+		JFreeChart finalResult = new JFreeChart(title, new Font("SansSerif", Font.BOLD, 12), finalPlot, true);
+
+		finalResult.setBackgroundPaint(trans);
+		finalPlot.setBackgroundPaint(trans);
 		try {
-			ChartUtilities.writeChartAsPNG(response.getOutputStream(), chart, 750, 400);
+			ChartUtilities.writeChartAsPNG(response.getOutputStream(), finalResult, 750, 400);
 			response.getOutputStream().close();
 		} catch (Exception e) {
 			e.printStackTrace();

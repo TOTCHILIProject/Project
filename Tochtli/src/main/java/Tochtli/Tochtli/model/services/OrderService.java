@@ -18,5 +18,5 @@ public interface OrderService {
 	
 	public DefaultCategoryDataset[] getOrdersBarDataSet();
 	
-	public TimeSeriesCollection getOrdersMonthSeries();
+	public TimeSeriesCollection[] getOrdersMonthSeries();
 }

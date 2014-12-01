@@ -59,7 +59,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public TimeSeriesCollection getOrdersMonthSeries() {
+	public TimeSeriesCollection[] getOrdersMonthSeries() {
 		TimeSeries number = new TimeSeries("number", Day.class);
 		TimeSeries total = new TimeSeries("total", Day.class);
 
@@ -72,9 +72,11 @@ public class OrderServiceImpl implements OrderService {
 					Double.parseDouble((o[0]).toString()));
 		}
 
-		TimeSeriesCollection dataset = new TimeSeriesCollection();
-		dataset.addSeries(number);
-		dataset.addSeries(total);
+		TimeSeriesCollection[] dataset = new TimeSeriesCollection[2];
+		dataset[0] = new TimeSeriesCollection();
+		dataset[0].addSeries(total);
+		dataset[1] = new TimeSeriesCollection();
+		dataset[1].addSeries(number);
 
 		return dataset;
 

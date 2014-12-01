@@ -101,6 +101,7 @@
 								<form:label path="lastName">Last Name</form:label>
 								<form:input path="lastName" class="form-control" />
 							</div>
+							<div class="clearfix"></div>
 							<div class="form-group col-lg-4">
 								<form:label path="email">Email Address</form:label>
 								<form:input path="email" class="form-control" type="email" />
@@ -109,6 +110,7 @@
 								<form:label path="phone">Phone number</form:label>
 								<form:input path="phone" class="form-control" type="tel" />
 							</div>
+							<div class="clearfix"></div>
 							<div class="form-group col-lg-12">
 								<input type="hidden" name="save" value="user">
 								<input type="submit" class="btn btn-default" value="Place order" />

@@ -52,7 +52,7 @@ public class Product {
 	 */
 
 	public Product() {
-
+		this.active = true;
 	}
 
 	public Product(long id, String name) {
@@ -66,7 +66,7 @@ public class Product {
 	}
 
 	public String getFullName() {
-		return this.category.getName() + ":" + this.name;
+		return this.category.getName() + ":" + this.name + "(" + this.stock + ")";
 	}
 
 	public long getId() {
