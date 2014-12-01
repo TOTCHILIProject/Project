@@ -35,6 +35,10 @@ public class Category {
 	/* for the instance we don't store images, but the image path */
 	@Column(name = "PHOTO_PATH")
 	private String photo_path;
+	
+	/* cannot delete a category, only deactivate it => the client cannot see it */
+	@Column(name = "ACTIVE")
+	private Boolean active;
 
 	public Category() {
 
@@ -87,6 +91,14 @@ public class Category {
 	@Override
 	public String toString() {
 	    return this.getName();
+	}
+	
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 
 }

@@ -120,6 +120,16 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		 * TODO : first get all products in the category and delete them second
 		 * delete category itself
 		 */
+		
+		Category c = categoryDAO.findById(id);
+		if (c != null) {
+			if (Boolean.TRUE.equals(c.getActive())) {
+				c.setActive(false);
+			} else {
+				c.setActive(true);
+			}
+			categoryDAO.updateCategory(c);
+		}
 	}
 
 	@Override

@@ -130,9 +130,43 @@ public class ProductController {
 		//categ = productService.getCategoryById(categ.getId());
 		//product.setCategory(categ);
 
+		//category = productService.getCategoryById(category.getId());
 		productService.persistCategory(category);
 
 		return "redirect:";
+
+	}
+	
+	@RequestMapping(value = "/admin/categories/add")
+	public ModelAndView addCategory() throws IOException {
+		ModelAndView categoryEditView = new ModelAndView("admin/editCategory");
+
+		Category category = new Category();
+
+		categoryEditView.addObject("command", category);
+		//categoryEditView.addObject("categories", productService.findAllCategories());
+		return categoryEditView;
+
+	}
+	
+	@RequestMapping(value = "/admin/categories/edit/{categoryID}")
+	public ModelAndView editCategory(@PathVariable Long categoryID) throws IOException {
+		ModelAndView categoryEditView = new ModelAndView("admin/editCategory");
+
+		Category category = productService.getCategoryById(categoryID);
+
+		// form:form expects an object names command
+		categoryEditView.addObject("command", category);
+		//categoryEditView.addObject("categories", productService.findAllCategories());
+		return categoryEditView;
+
+	}
+	
+	@RequestMapping(value = "/admin/categories/activate/{categoryID}")
+	public String activateCategory(@PathVariable Long categoryID) throws IOException {
+		productService.deleteCategory(categoryID);
+
+		return "redirect:" + "/admin/categories";
 
 	}
 }

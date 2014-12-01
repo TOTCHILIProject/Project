@@ -10,7 +10,6 @@
 <html lang="en">
 <head>
 
-    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -38,45 +37,30 @@
     	<div class="row">
     		<div class="box">
     			
-    		<h2 class="intro-text text-center">
-				<strong>Categorias</strong>
-			</h2>
-			<div class="col-sm-2 text-center">
-				<a href="/Tochtli/admin/categories/add">
-					<span class="glyphicon glyphicons-plus">
-						<strong>Add new category</strong>
-					</span>
-				</a>
-			</div><br/><br/>
-			
-			<c:forEach var="category" items="${categories}">
-				<div class="col-sm-2 text-center">
-					<img src="${pageContext.request.contextPath}/resources/img/${category.photo_path}" alt="" height="50" width="50">
-					<h2 class="intro-text text center">
-						<strong>${category.name}</strong>
-					</h2>
-					<a href="/Tochtli/admin/categories/edit/${category.id}">
-						<span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
-					</a>
-					<br/>
-					
-					<c:choose>
-				      <c:when test="${category.active==true}">
-						<a href="/Tochtli/admin/categories/activate/${category.id}">
-							<span class="glyphicon glyphicon-remove" aria-hidden="true">Deactivate</span>
-						</a>
-				      </c:when>
-				
-				      <c:otherwise>
-						<a href="/Tochtli/admin/categories/activate/${category.id}">
-							<span class="glyphicon glyphicon-ok" aria-hidden="true">Activate</span>
-						</a>
-				      </c:otherwise>
-				   </c:choose>
-					
-				</div>
-			</c:forEach>
-			
+    			<form:form method="post" action="/Tochtli/admin/categories/persistCategories">
+					<div class="row">
+						<div class="form-group col-lg-4">
+							<form:label path="name">Name</form:label>
+							<form:input path="name" class="form-control" />
+						</div>
+						<div class="clearfix"></div>
+						<div class="form-group col-lg-4">
+							<form:label path="description">Description</form:label>
+							<form:textarea path="description" class="form-control" rows="6"/>
+						</div>
+						<div class="clearfix"></div>
+						<div class="form-group col-lg-4">
+							<form:label path="photo_path">Path Photo</form:label>
+							<form:input path="photo_path" class="form-control"/>
+						</div>
+						<div class="form-group col-lg-12">
+							<form:hidden path="id" />
+							<form:hidden path="active" />
+							<input type="submit" class="btn btn-default" value="Save" />
+						</div>
+					</div>
+				</form:form>
+		
     		</div>
     	</div>
 	</div>
