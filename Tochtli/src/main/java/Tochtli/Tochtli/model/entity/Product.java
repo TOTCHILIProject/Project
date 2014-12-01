@@ -65,6 +65,10 @@ public class Product {
 		this.name = name;
 	}
 
+	public String getFullName() {
+		return this.category.getName() + ":" + this.name;
+	}
+
 	public long getId() {
 		return id;
 	}

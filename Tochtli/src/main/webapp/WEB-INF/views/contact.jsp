@@ -106,7 +106,7 @@
 							<div class="clearfix"></div>
 							<div class="form-group col-lg-12">
 								<form:label path="message">Message</form:label>
-								<form:input path="message" class="form-control" rows="6" />
+								<form:textarea path="message" class="form-control" rows="6" />
 							</div>
 							<div class="form-group col-lg-12">
 								<input type="hidden" name="save" value="contact"> 

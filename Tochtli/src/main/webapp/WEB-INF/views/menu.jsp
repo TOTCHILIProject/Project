@@ -30,7 +30,7 @@
 		              <li><a href="/Tochtli/admin/products">Productos</a></li>
 		              <li><a href="/Tochtli/admin/categories">Categorías</a></li>
 		              <li><a href="/Tochtli/admin/orders">Pedidos</a></li>
-		              <li><a href="#">Reportes</a></li>
+		              <li><a href="/Tochtli/admin/reports">Reportes</a></li>
 		              <li><a href="#">Clientes</a></li>
 		            </ul>
 				</li>
