@@ -5,7 +5,12 @@
 
 # Host whose mail services will be used 
 # (Default value : localhost)
-mail.host=smtp.noos.fr
+mail.smtp.host=smtp.gmail.com
+mail.smtp.port=465
+mail.smtp.auth=true
+mail.smtp.socketFactory.port=465
+mail.smtp.socketFactory.class=javax.net.ssl.SSLSocketFactory
+mail.transport.protocol=smtps
 
 #smtp.o2.ie smtp.o2.co.uk pop3.btconnect.com mail.btopenworld.com smtp.comcast.net mail.o2online.de
 
