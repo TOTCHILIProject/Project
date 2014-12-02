@@ -33,9 +33,19 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@Override
 	public void persistCategory(Category category) {
-		
-		sessionFactory.getCurrentSession().saveOrUpdate(category);
+		//for some reason cannot pass the products to the form 
+		if (category.getId() != null) {
+			// edit category
+			Category c = findById(category.getId());
+			if (c != null) {
+				c.setDescription(category.getDescription());
+				c.setName(category.getName());
+				c.setPhoto_path(category.getPhoto_path());
+				category = c;
+			}
+		}
 
+		sessionFactory.getCurrentSession().saveOrUpdate(category);
 	}
 
 	@Override
@@ -46,7 +56,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@Override
 	public void updateCategory(Category category) {
-		sessionFactory.getCurrentSession().update(category);	
+		sessionFactory.getCurrentSession().update(category);
 	}
 
 	@Override

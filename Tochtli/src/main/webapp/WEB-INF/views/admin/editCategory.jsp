@@ -56,7 +56,6 @@
 						<div class="form-group col-lg-12">
 							<form:hidden path="id" />
 							<form:hidden path="active" />
-							<form:hidden path="products" />
 							<input type="submit" class="btn btn-default" value="Save" />
 						</div>
 					</div>

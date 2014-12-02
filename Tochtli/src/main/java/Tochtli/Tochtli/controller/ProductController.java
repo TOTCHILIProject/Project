@@ -119,16 +119,9 @@ public class ProductController {
 	@RequestMapping(value = "/admin/categories/persistCategories", method = RequestMethod.POST)
 	public String persistCategory(@ModelAttribute("category") Category category) {
 
-		if (category.getProducts() != null) {
-			System.out.println(category.getProducts());
-			for (Product p : category.getProducts()) {
-				p.setCategory(category);
-			}
-		}
 		productService.persistCategory(category);
 
 		return "redirect:";
-
 	}
 
 	@RequestMapping(value = "/admin/categories/add")
