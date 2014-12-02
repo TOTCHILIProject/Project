@@ -23,8 +23,6 @@ public class ProductController {
 	@Autowired
 	private ProductCategoryService productService;
 
-	// private List<Category> categories;
-
 	/* Retrieve all categories */
 	@RequestMapping(value = "/galery")
 	public ModelAndView galery(HttpServletResponse response) throws IOException {
@@ -41,8 +39,6 @@ public class ProductController {
 
 		ModelAndView galeryDetailView = new ModelAndView("detailCategory");
 		Category category = productService.getCategoryById(categId);
-
-		// category = categories.get(categId.intValue());
 
 		galeryDetailView.addObject("category", category);
 		return galeryDetailView;
@@ -108,7 +104,7 @@ public class ProductController {
 		return "redirect:";
 
 	}
-	
+
 	/* Retrieve all categories for admin */
 	@RequestMapping(value = "/admin/categories")
 	public ModelAndView categoryAdmin(HttpServletResponse response) throws IOException {
@@ -119,24 +115,22 @@ public class ProductController {
 		return categoriesAdminView;
 
 	}
-	
+
 	@RequestMapping(value = "/admin/categories/persistCategories", method = RequestMethod.POST)
 	public String persistCategory(@ModelAttribute("category") Category category) {
 
-		// System.out.println(contact.toString());
-
-		// for some reason it creates a new object => we have to link the
-		// product to the already existent categrory
-		//categ = productService.getCategoryById(categ.getId());
-		//product.setCategory(categ);
-
-		//category = productService.getCategoryById(category.getId());
+		if (category.getProducts() != null) {
+			System.out.println(category.getProducts());
+			for (Product p : category.getProducts()) {
+				p.setCategory(category);
+			}
+		}
 		productService.persistCategory(category);
 
 		return "redirect:";
 
 	}
-	
+
 	@RequestMapping(value = "/admin/categories/add")
 	public ModelAndView addCategory() throws IOException {
 		ModelAndView categoryEditView = new ModelAndView("admin/editCategory");
@@ -144,11 +138,10 @@ public class ProductController {
 		Category category = new Category();
 
 		categoryEditView.addObject("command", category);
-		//categoryEditView.addObject("categories", productService.findAllCategories());
 		return categoryEditView;
 
 	}
-	
+
 	@RequestMapping(value = "/admin/categories/edit/{categoryID}")
 	public ModelAndView editCategory(@PathVariable Long categoryID) throws IOException {
 		ModelAndView categoryEditView = new ModelAndView("admin/editCategory");
@@ -157,11 +150,10 @@ public class ProductController {
 
 		// form:form expects an object names command
 		categoryEditView.addObject("command", category);
-		//categoryEditView.addObject("categories", productService.findAllCategories());
 		return categoryEditView;
 
 	}
-	
+
 	@RequestMapping(value = "/admin/categories/activate/{categoryID}")
 	public String activateCategory(@PathVariable Long categoryID) throws IOException {
 		productService.deleteCategory(categoryID);

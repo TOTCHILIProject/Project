@@ -33,7 +33,8 @@ public class CategoryDAOImpl implements CategoryDAO {
 
 	@Override
 	public void persistCategory(Category category) {
-		sessionFactory.getCurrentSession().persist(category);
+		
+		sessionFactory.getCurrentSession().saveOrUpdate(category);
 
 	}
 

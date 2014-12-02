@@ -133,6 +133,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 	}
 
 	@Override
+	@Transactional
 	public void persistCategory(Category category) {
 		categoryDAO.persistCategory(category);
 	}

@@ -41,7 +41,7 @@ public class Category {
 	private Boolean active;
 
 	public Category() {
-
+		this.active = true;
 	}
 
 	public Category(String name) {
