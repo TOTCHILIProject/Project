@@ -3,9 +3,7 @@ package Tochtli.Tochtli.model.services.email;
 import java.io.InputStream;
 import java.util.Properties;
 
-import javax.mail.Authenticator;
 import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -22,18 +20,15 @@ public class EmailService {
 
 			InputStream emailPropTxt = EmailService.class.getResourceAsStream("emailProp.txt");
 			emailProp.load(emailPropTxt);
+			// System.out.println(emailProp.toString());
 
 			// null : no authenticator
-			Session emailSession = Session.getInstance(emailProp, new Authenticator() {
-				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(tochtliEmail, password);
-				}
-			});
+			Session emailSession = Session.getInstance(emailProp, new GmailAuthenticator(tochtliEmail, password));
 
 			Message emailMessage = new MimeMessage(emailSession);
-			emailMessage.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			emailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			if (cc != null) {
-				emailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(cc));
+				emailMessage.setRecipient(Message.RecipientType.CC, new InternetAddress(cc));
 			}
 
 			emailMessage.setFrom(new InternetAddress(from));
