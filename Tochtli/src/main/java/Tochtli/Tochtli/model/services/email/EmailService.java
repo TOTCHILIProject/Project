@@ -12,7 +12,6 @@ import javax.mail.internet.MimeMessage;
 public class EmailService {
 
 	public static String tochtliEmail = "tochtli.nereid1415@gmail.com";
-	private static String password = "nereid1415";
 
 	public static void sendEmail(String to, String cc, String from, String subject, String text) {
 		try {
@@ -23,7 +22,7 @@ public class EmailService {
 			// System.out.println(emailProp.toString());
 
 			// null : no authenticator
-			Session emailSession = Session.getInstance(emailProp, new GmailAuthenticator(tochtliEmail, password));
+			Session emailSession = Session.getDefaultInstance(emailProp);
 
 			Message emailMessage = new MimeMessage(emailSession);
 			emailMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
@@ -35,7 +34,11 @@ public class EmailService {
 			emailMessage.setSubject(subject);
 			emailMessage.setText(text);
 
-			Transport.send(emailMessage);
+			Transport transport = emailSession.getTransport("smtp");
+			transport.connect(emailSession.getProperty("mail.smtp.host"), emailSession.getProperty("mail.smtp.user"),
+					emailSession.getProperty("mail.smtp.password"));
+			transport.sendMessage(emailMessage, emailMessage.getAllRecipients());
+			transport.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
